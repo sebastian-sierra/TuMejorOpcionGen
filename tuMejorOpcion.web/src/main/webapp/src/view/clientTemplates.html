@@ -1,0 +1,48 @@
+<script type="text/template" id="clientList">
+    <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <table class="table striped">
+    <thead>
+    <tr>
+		 <th>Name</th>
+		 <th>Email</th>
+    <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(clients, function(client) { %>
+    <tr>
+		<td><%= htmlEncode(client.getDisplay('name')) %></td>
+		<td><%= htmlEncode(client.getDisplay('email')) %></td>
+    <td>
+    <% if(showEdit) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-client-edit',{id:<%= client.id %>}); return false" >Edit</a> |
+	<% } %> 
+	<% if(showDelete) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-client-delete',{id:<%= client.id %>}); return false" >Delete</a> 
+	<% } %>    
+	</td>
+    </tr>
+    <% }); %>
+    </tbody>
+    </table>
+    </div>
+</script>
+
+<script type="text/template" id="client">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-clientForm">
+    <% if(client.id) {%>
+    <input type="hidden" name="id" value="<%= client.id %>"/>
+    <% }%>
+		<div class="form-group" >
+		<label for="name">Name</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= client.get('name') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="email">Email</label>
+    	<input type="text" class="form-control" id="email" name="email" placeholder="Enter value" value="<%= client.get('email') %>"/>	
+		</div>
+    </form>
+    </div>
+</script> 

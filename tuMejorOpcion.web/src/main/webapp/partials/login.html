@@ -1,0 +1,9 @@
+<form ng-submit="redirectToFriends()" ng-controller="LoginController as controller">
+    
+    Login<br>
+    
+    <fb:login-button data-scope="user_friends, user_likes" data-size="small"
+                     onlogin="" ng-hide="friendsLoaded">
+    </fb:login-button>
+                                 
+</form>

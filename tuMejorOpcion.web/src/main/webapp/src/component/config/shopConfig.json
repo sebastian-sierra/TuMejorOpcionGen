@@ -1,0 +1,9 @@
+{
+    "displayName" : "Shop",
+    "name" : "shop",
+    "templateName" : "shop",
+    "url" : "user.html",
+    "server": "localhost:8080",
+    "context": "/tuMejorOpcion.web/webresources/Shop",
+    "el" : "#main"
+}

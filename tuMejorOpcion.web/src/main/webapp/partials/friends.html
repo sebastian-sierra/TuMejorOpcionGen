@@ -1,0 +1,20 @@
+<div ng-controller="FriendsController as controller">   
+    
+    <br>Bienvenido {{me.name}} ! 
+    
+    <br>Estos son tus amigos, selecciona alguno para ver qué le gusta!
+    
+    <br>
+    <table>
+        <tr>
+            <th></th><th>Amigo</th><th>Comprar bono</th>
+        </tr>
+        <tr data-ng-repeat="friend in friends">
+            
+            <td>Foto</td>
+            <td>{{friend.name}}</td>
+            <td><button ng-click="didSelectFriend(friend)">Elegir amigo</button></td>
+            
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,19 @@
+<div ng-controller="GiftCardsController as giftCardController">   
+
+        <div data-ng-repeat="giftCard in giftCards">
+            
+            <div>
+                <!-- foto -->
+                {{giftCard.shop.name}}
+                <button type="button" ng-click="giftCard.selected = !giftCard.selected">{{giftCard.selected? 'Cerrar':'Comprar'}}</button>
+            </div>
+ 
+            <div ng-show="giftCard.selected">
+                
+                Valor <input type="text" ng-model="value">
+
+                <button type="button" ng-click="buySelectedGiftCard()">Comprar</button>        
+            </div>
+            
+        </div>
+</div>

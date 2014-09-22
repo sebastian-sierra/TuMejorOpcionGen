@@ -1,0 +1,9 @@
+{
+    "displayName" : "GiftCard",
+    "name" : "giftCard",
+    "templateName" : "giftCard",
+    "url" : "user.html",
+    "server": "localhost:8080",
+    "context": "/tuMejorOpcion.web/webresources/GiftCard",
+    "el" : "#main"
+}

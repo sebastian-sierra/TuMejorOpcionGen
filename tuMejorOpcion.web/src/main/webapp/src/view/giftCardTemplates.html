@@ -1,0 +1,82 @@
+<script type="text/template" id="giftCardList">
+    <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <table class="table striped">
+    <thead>
+    <tr>
+		 <th>Name</th>
+		 <th>Value</th>
+		 <th>Date Created</th>
+		 <th>Shop Id</th>
+		 <th>Destinary Id</th>
+    <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(giftCards, function(giftCard) { %>
+    <tr>
+		<td><%= htmlEncode(giftCard.getDisplay('name')) %></td>
+		<td><%= htmlEncode(giftCard.getDisplay('value')) %></td>
+		<td><%= htmlEncode(giftCard.getDisplay('dateCreated')) %></td>
+		<td><%= htmlEncode(giftCard.getDisplay('shopId')) %></td>
+		<td><%= htmlEncode(giftCard.getDisplay('destinaryId')) %></td>
+    <td>
+    <% if(showEdit) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-giftCard-edit',{id:<%= giftCard.id %>}); return false" >Edit</a> |
+	<% } %> 
+	<% if(showDelete) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-giftCard-delete',{id:<%= giftCard.id %>}); return false" >Delete</a> 
+	<% } %>    
+	</td>
+    </tr>
+    <% }); %>
+    </tbody>
+    </table>
+    </div>
+</script>
+
+<script type="text/template" id="giftCard">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-giftCardForm">
+    <% if(giftCard.id) {%>
+    <input type="hidden" name="id" value="<%= giftCard.id %>"/>
+    <% }%>
+		<div class="form-group" >
+		<label for="name">Name</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= giftCard.get('name') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="value">Value</label>
+    	<input type="text" class="form-control" id="value" name="value" placeholder="Enter value" value="<%= giftCard.get('value') %>"/>	
+		</div>
+		<div class="form-group" >
+			<label for="dateCreated">Date Created</label>
+    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="dateCreated"  name="dateCreated" placeholder="Enter value" />
+    		<%= '<scr'+'ipt>' %>
+        	$('#dateCreated').datepicker({autoclose:true});
+        	$('#dateCreated').datepicker('setDate',App.Utils.Converter.date.toDate("<%= giftCard.get('dateCreated') %>"));
+    		<%= '</scr'+'ipt>' %>
+		</div>
+		<div class="form-group" >
+ 
+			<label for="shopidId">Shop Id</label> 
+            <select class="form-control" id="shopId" name="shopId">
+			  <option value="">None</option>
+            <% shop.each(function(shopid) { %> 
+              <option value="<%=shopid.get('id')%>" <% if(giftCard.get('shopId')==shopid.get('id')) {%>selected<%}%> ><%=shopid.get('name')%></option>
+            <% }); %>                
+            </select>  
+		</div>
+		<div class="form-group" >
+ 
+			<label for="destinaryidId">Destinary Id</label> 
+            <select class="form-control" id="destinaryId" name="destinaryId">
+			  <option value="">None</option>
+            <% destinary.each(function(destinaryid) { %> 
+              <option value="<%=destinaryid.get('id')%>" <% if(giftCard.get('destinaryId')==destinaryid.get('id')) {%>selected<%}%> ><%=destinaryid.get('name')%></option>
+            <% }); %>                
+            </select>  
+		</div>
+    </form>
+    </div>
+</script> 

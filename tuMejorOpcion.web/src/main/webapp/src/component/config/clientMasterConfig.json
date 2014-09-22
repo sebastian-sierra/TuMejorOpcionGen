@@ -1,0 +1,11 @@
+{
+    "displayName" : "Client",
+    "name" : "client",
+    "templateName" : "client",
+    "url" : "client.html",
+    "server": "localhost:8080",
+    "server": "localhost:8080",
+    "context": "/tuMejorOpcion.web/webresources/ClientMaster",
+    
+    "el" : "#main"
+}
