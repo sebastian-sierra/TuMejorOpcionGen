@@ -18,10 +18,11 @@ module.controller('FriendsController',['$window','$scope', '$http', 'DataService
         console.log(friend.id);
         var controller = self;
         
-        $http.get('http://localhost:8080/TuMejorOpcion-war/webresources/tiendas').
+        $http.get('http://localhost:8080/tuMejorOpcion.web/webresources/Shop').
         success
            (function(data) {
-               
+            
+            console.log(data);
             
             DataService.shops = [{name:"Nike", id:0},{name:"Adidas", id:1}]/*data*/;
             DataService.selectedFriend = friend;

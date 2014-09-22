@@ -1,0 +1,13 @@
+<div ng-controller="PurchasedGiftCardsController as purchasedGiftCardsController">
+    
+    <div data-ng-repeat="giftCard in giftCards">
+        
+        <div>
+            <!-- foto -->
+            Para: {{giftCard.receiver}}
+            {{giftCard.shop.name}}
+            ${{giftCard.value}}           
+            {{giftCard.date}}
+        </div>
+    </div>
+</div>

@@ -11,7 +11,8 @@ var clienteWebApp = angular.module('phonecatApp', [
   'login',
   'friends',
   'giftCards',
-  'completedPurchase'
+  'completedPurchase',
+  'purchasedGiftCards'
 ]);
 
 clienteWebApp.factory('DataService', function () 
@@ -50,6 +51,10 @@ clienteWebApp.config(['$routeProvider', '$httpProvider',
       when('/giftCards', {
         templateUrl: 'partials/giftCards.html',
         controller: 'GiftCardsController'
+      }).
+      when('/purchasedGiftCards', {
+        templateUrl: 'partials/purchasedGiftCards.html',
+        controller: 'PurchasedGiftCardsController'
       }).
       when('/completedPurchase', {
         templateUrl: 'partials/completedPurchase.html',
