@@ -18,14 +18,13 @@ module.controller('FriendsController',['$window','$scope', '$http', 'DataService
         console.log(friend.id);
         var controller = self;
         
-        $http.get('http://localhost:8080/TuMejorOpcion-war/webresources/tiendas').
+        $http.get('http://localhost:8080/tuMejorOpcion.web/webresources/Shop/').
         success
            (function(data) {
                
-            
-            DataService.shops = [{name:"Nike", id:0},{name:"Adidas", id:1}]/*data*/;
-            DataService.selectedFriend = friend;
-            DataService.selectedFriendApplicableShops.push(DataService.shops[0]); //PRUEBAS        
+           
+            DataService.shops = data/*data*/;
+            DataService.selectedFriend = friend;     
                            
             FB.api("/"+ friend.id +"/likes", function (friendLikesResponse) 
             {
@@ -34,8 +33,7 @@ module.controller('FriendsController',['$window','$scope', '$http', 'DataService
                 for (var j in friendLikesResponse.data) 
                 {   
                     var like = friendLikesResponse.data[j];
-                    console.log(like.name);
-
+                    
                     for (var k in DataService.shops)
                     {     
                         var shop = DataService.shops[k];

@@ -70,7 +70,7 @@ public abstract class _ShopService {
 	}
 	
 	@PUT
-    @Path("{id}")
+        @Path("{id}")
 	public void updateShop(@PathParam("id") Long id, ShopDTO shop){
 		shopLogicService.updateShop(shop);
 	}
