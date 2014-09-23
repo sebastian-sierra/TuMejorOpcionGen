@@ -57,11 +57,11 @@ public abstract class _ClientPersistence implements _IClientPersistence {
 		return ClientConverter.entity2PersistenceDTOList(q.getResultList());
 	}
 
-	public ClientDTO getClient(Long id) {
+	public ClientDTO getClient(String id) {
 		return ClientConverter.entity2PersistenceDTO(entityManager.find(ClientEntity.class, id));
 	}
 
-	public void deleteClient(Long id) {
+	public void deleteClient(String id) {
 		ClientEntity entity=entityManager.find(ClientEntity.class, id);
 		entityManager.remove(entity);
 	}

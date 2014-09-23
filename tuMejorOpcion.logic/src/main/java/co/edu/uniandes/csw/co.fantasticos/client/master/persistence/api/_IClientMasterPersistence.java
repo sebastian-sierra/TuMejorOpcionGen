@@ -35,12 +35,12 @@ import java.util.List;
 
 public interface _IClientMasterPersistence {
 
-	public ClientMasterDTO getClient(Long clientId);
+	public ClientMasterDTO getClient(String clientId);
 	
 	
     public ClientpurchasedGiftCardsEntity createClientpurchasedGiftCardsEntity(ClientpurchasedGiftCardsEntity entity);
-    public void deleteClientpurchasedGiftCardsEntity(Long clientId, Long purchasedGiftCardsId);
-    public List<GiftCardDTO> getClientpurchasedGiftCardsEntityList(Long clientId);
+    public void deleteClientpurchasedGiftCardsEntity(String clientId, Long purchasedGiftCardsId);
+    public List<GiftCardDTO> getClientpurchasedGiftCardsEntityList(String clientId);
    
   
 }

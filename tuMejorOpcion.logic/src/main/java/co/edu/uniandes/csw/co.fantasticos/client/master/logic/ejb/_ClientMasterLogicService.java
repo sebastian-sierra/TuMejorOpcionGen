@@ -36,6 +36,9 @@ import co.edu.uniandes.csw.co.fantasticos.client.master.logic.dto.ClientMasterDT
 import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.api.IClientMasterPersistence;
 import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientpurchasedGiftCardsEntity;
 import co.edu.uniandes.csw.co.fantasticos.client.persistence.api.IClientPersistence;
+import co.edu.uniandes.csw.co.fantasticos.shop.logic.dto.ShopDTO;
+import co.edu.uniandes.csw.co.fantasticos.shop.persistence.api.IShopPersistence;
+import co.edu.uniandes.csw.co.fantasticos.threads.ThreadEnviarCorreo;
 import javax.inject.Inject;
 
 public abstract class _ClientMasterLogicService implements _IClientMasterLogicService {
@@ -46,6 +49,8 @@ public abstract class _ClientMasterLogicService implements _IClientMasterLogicSe
     protected IClientMasterPersistence clientMasterPersistance;
     @Inject
     protected IGiftCardPersistence giftCardPersistance;
+    @Inject
+    protected IShopPersistence shopPersistance;
 
     public ClientMasterDTO createMasterClient(ClientMasterDTO client) {
         ClientDTO persistedClientDTO = clientPersistance.createClient(client.getClientEntity());
@@ -67,11 +72,11 @@ public abstract class _ClientMasterLogicService implements _IClientMasterLogicSe
         return client;
     }
 
-    public ClientMasterDTO getMasterClient(Long id) {
+    public ClientMasterDTO getMasterClient(String id) {
         return clientMasterPersistance.getClient(id);
     }
 
-    public void deleteMasterClient(Long id) {
+    public void deleteMasterClient(String id) {
         clientPersistance.deleteClient(id);
     }
 
@@ -85,6 +90,11 @@ public abstract class _ClientMasterLogicService implements _IClientMasterLogicSe
                 GiftCardDTO createdGiftCardDTO = giftCardPersistance.createGiftCard(giftCardDTO);
                 ClientpurchasedGiftCardsEntity clientGiftCardEntity = new ClientpurchasedGiftCardsEntity(client.getClientEntity().getId(), createdGiftCardDTO.getId());
                 clientMasterPersistance.createClientpurchasedGiftCardsEntity(clientGiftCardEntity);
+                
+                ClientDTO sender = clientPersistance.getClient(client.getClientEntity().getId());
+                ClientDTO receiver = clientPersistance.getClient(createdGiftCardDTO.getDestinaryId());
+                ShopDTO shop = shopPersistance.getShop(createdGiftCardDTO.getShopId());
+                (new ThreadEnviarCorreo(sender, createdGiftCardDTO, receiver, shop)).start();
             }
         }
         // update giftCard
@@ -101,4 +111,5 @@ public abstract class _ClientMasterLogicService implements _IClientMasterLogicSe
             }
         }
     }
+    
 }

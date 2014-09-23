@@ -54,7 +54,7 @@ public abstract class _ClientService {
 	
 	@DELETE
 	@Path("{id}")
-	public void deleteClient(@PathParam("id") Long id){
+	public void deleteClient(@PathParam("id") String id){
 		clientLogicService.deleteClient(id);
 	}
 	
@@ -65,13 +65,13 @@ public abstract class _ClientService {
 	
 	@GET
 	@Path("{id}")
-	public ClientDTO getClient(@PathParam("id") Long id){
+	public ClientDTO getClient(@PathParam("id") String id){
 		return clientLogicService.getClient(id);
 	}
 	
 	@PUT
         @Path("{id}")
-	public void updateClient(@PathParam("id") Long id, ClientDTO client){
+	public void updateClient(@PathParam("id") String id, ClientDTO client){
 		clientLogicService.updateClient(client);
 	}
 	

@@ -47,7 +47,7 @@ public abstract class _GiftCardEntity {
 	@Temporal(TemporalType.DATE)
 	private Date dateCreated;
 	private Long shopId;
-	private Long destinaryId;
+	private String destinaryId;
 
 	public Long getId(){
 		return id;
@@ -84,11 +84,11 @@ public abstract class _GiftCardEntity {
 	public void setShopId(Long shopId){
 		this.shopId = shopId;
 	}
-	public Long getDestinaryId(){
+	public String getDestinaryId(){
 		return destinaryId;
 	}
 	
-	public void setDestinaryId(Long destinaryId){
+	public void setDestinaryId(String destinaryId){
 		this.destinaryId = destinaryId;
 	}
 }

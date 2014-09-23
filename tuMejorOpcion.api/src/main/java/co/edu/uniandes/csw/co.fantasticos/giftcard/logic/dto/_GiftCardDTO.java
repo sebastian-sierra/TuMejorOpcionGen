@@ -52,7 +52,7 @@ public abstract class _GiftCardDTO {
 	private Long shopId;
 	
 
-	private Long destinaryId;
+	private String destinaryId;
 
 
 
@@ -101,11 +101,11 @@ public abstract class _GiftCardDTO {
 	}
 
 
-	public Long getDestinaryId() {
+	public String getDestinaryId() {
 		return destinaryId;
 	}
  
-	public void setDestinaryId(Long destinaryid) {
+	public void setDestinaryId(String destinaryid) {
 		this.destinaryId = destinaryid;
 	}
 	

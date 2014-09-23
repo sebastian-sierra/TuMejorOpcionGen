@@ -47,11 +47,11 @@ public abstract class _ClientLogicService implements _IClientLogicService {
 		return persistance.getClients(); 
 	}
 
-	public ClientDTO getClient(Long id){
+	public ClientDTO getClient(String id){
 		return persistance.getClient(id); 
 	}
 
-	public void deleteClient(Long id){
+	public void deleteClient(String id){
 	    persistance.deleteClient(id); 
 	}
 

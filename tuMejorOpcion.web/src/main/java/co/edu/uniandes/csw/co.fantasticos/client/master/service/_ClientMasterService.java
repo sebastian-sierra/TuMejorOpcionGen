@@ -51,19 +51,19 @@ public abstract class _ClientMasterService {
 
     @DELETE
     @Path("{id}")
-    public void deleteClient(@PathParam("id") Long id) {
+    public void deleteClient(@PathParam("id") String id) {
         clientLogicService.deleteMasterClient(id);
     }
     
     @GET
     @Path("{id}")
-    public ClientMasterDTO getClient(@PathParam("id") Long id) {
+    public ClientMasterDTO getClient(@PathParam("id") String id) {
         return clientLogicService.getMasterClient(id);
     }
 
     @PUT
     @Path("{id}")
-    public void updateClient(@PathParam("id") Long id, ClientMasterDTO client) {
+    public void updateClient(@PathParam("id") String id, ClientMasterDTO client) {
         clientLogicService.updateMasterClient(client);
     }
 

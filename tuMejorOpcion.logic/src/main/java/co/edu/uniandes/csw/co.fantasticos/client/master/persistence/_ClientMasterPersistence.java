@@ -50,7 +50,7 @@ public class _ClientMasterPersistence implements _IClientMasterPersistence {
     @Inject
     protected IClientPersistence clientPersistence;  
 
-    public ClientMasterDTO getClient(Long clientId) {
+    public ClientMasterDTO getClient(String clientId) {
         ClientMasterDTO clientMasterDTO = new ClientMasterDTO();
         ClientDTO client = clientPersistence.getClient(clientId);
         clientMasterDTO.setClientEntity(client);
@@ -63,14 +63,14 @@ public class _ClientMasterPersistence implements _IClientMasterPersistence {
         return entity;
     }
 
-    public void deleteClientpurchasedGiftCardsEntity(Long clientId, Long purchasedGiftCardsId) {
+    public void deleteClientpurchasedGiftCardsEntity(String clientId, Long purchasedGiftCardsId) {
         Query q = entityManager.createNamedQuery("ClientpurchasedGiftCardsEntity.deleteClientpurchasedGiftCardsEntity");
         q.setParameter("clientId", clientId);
         q.setParameter("purchasedGiftCardsId", purchasedGiftCardsId);
         q.executeUpdate();
     }
 
-    public List<GiftCardDTO> getClientpurchasedGiftCardsEntityList(Long clientId) {
+    public List<GiftCardDTO> getClientpurchasedGiftCardsEntityList(String clientId) {
         ArrayList<GiftCardDTO> resp = new ArrayList<GiftCardDTO>();
         Query q = entityManager.createNamedQuery("ClientpurchasedGiftCardsEntity.getByMasterId");
         q.setParameter("clientId",clientId);

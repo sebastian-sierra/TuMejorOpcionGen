@@ -57,9 +57,9 @@ public abstract class _ClientMasterMockLogicService implements _IClientMasterLog
         return client;
     }
 
-    public ClientMasterDTO getMasterClient(Long id) {
+    public ClientMasterDTO getMasterClient(String id) {
         for (ClientMasterDTO clientMasterDTO : clientMasterDtosList) {
-            if (clientMasterDTO.getClientEntity().getId() == id) {
+            if (clientMasterDTO.getClientEntity().getId().equals(id)) {
                 return clientMasterDTO;
             }
         }
@@ -67,9 +67,9 @@ public abstract class _ClientMasterMockLogicService implements _IClientMasterLog
         return null;
     }
 
-    public void deleteMasterClient(Long id) {
+    public void deleteMasterClient(String id) {
         for (ClientMasterDTO clientMasterDTO : clientMasterDtosList) {
-            if (clientMasterDTO.getClientEntity().getId() == id) {
+            if (clientMasterDTO.getClientEntity().getId().equals(id)) {
 
                 for (GiftCardDTO dto : clientMasterDTO.getCreatepurchasedGiftCards()) {
                     giftCardPersistance.deleteGiftCard(dto.getId());

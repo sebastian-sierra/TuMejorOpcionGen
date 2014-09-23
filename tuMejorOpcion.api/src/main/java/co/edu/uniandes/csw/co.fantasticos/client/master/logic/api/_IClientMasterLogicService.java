@@ -35,7 +35,7 @@ public interface _IClientMasterLogicService {
 
 	public ClientMasterDTO createMasterClient(ClientMasterDTO detail);
     public void updateMasterClient(ClientMasterDTO detail);
-	public void deleteMasterClient(Long id); 
-	public ClientMasterDTO getMasterClient(Long id);
+	public void deleteMasterClient(String id); 
+	public ClientMasterDTO getMasterClient(String id);
         
 }

@@ -6,7 +6,7 @@ module.controller('GiftCardsController',['DataService','$window','$scope', '$htt
 {    
     $scope.selectedGiftCard = null;     
     $scope.giftCards = [];
-    
+    $scope.selectedFriend = DataService.selectedFriend;
     $scope.formData = {};
     
     function GiftCard(shop, price)

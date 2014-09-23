@@ -51,7 +51,7 @@ public class ClientpurchasedGiftCardsEntity implements Serializable {
 
     @Id
     @Column(name = "clientId")
-    private Long clientId;
+    private String clientId;
     @Id
     @Column(name = "purchasedGiftCardsId")
     private Long purchasedGiftCardsId;
@@ -67,16 +67,16 @@ public class ClientpurchasedGiftCardsEntity implements Serializable {
     public ClientpurchasedGiftCardsEntity() {
     }
 
-    public ClientpurchasedGiftCardsEntity(Long clientId, Long purchasedGiftCardsId) {
+    public ClientpurchasedGiftCardsEntity(String clientId, Long purchasedGiftCardsId) {
         this.clientId =clientId;
         this.purchasedGiftCardsId = purchasedGiftCardsId;
     }
 
-    public Long getClientId() {
+    public String getClientId() {
         return clientId;
     }
 
-    public void setClientId(Long clientId) {
+    public void setClientId(String clientId) {
         this.clientId = clientId;
     }
 

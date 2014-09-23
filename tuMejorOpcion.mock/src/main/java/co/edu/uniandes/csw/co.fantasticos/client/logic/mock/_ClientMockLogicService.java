@@ -35,11 +35,11 @@ import co.edu.uniandes.csw.co.fantasticos.client.logic.api._IClientLogicService;
 
 public abstract class _ClientMockLogicService implements _IClientLogicService {
 
-	private Long id= new Long(1);
+	private String id= new Long(1)+"";
 	protected List<ClientDTO> data=new ArrayList<ClientDTO>();
 
 	public ClientDTO createClient(ClientDTO client){
-		id++;
+		id = (Long.parseLong(id)+1)+"";
 		client.setId(id);
 		data.add(client);
 		return client;
@@ -49,7 +49,7 @@ public abstract class _ClientMockLogicService implements _IClientLogicService {
 		return data; 
 	}
 
-	public ClientDTO getClient(Long id){
+	public ClientDTO getClient(String id){
 		for(ClientDTO data1:data){
 			if(data1.getId().equals(id)){
 				return data1;
@@ -58,7 +58,7 @@ public abstract class _ClientMockLogicService implements _IClientLogicService {
 		return null;
 	}
 
-	public void deleteClient(Long id){
+	public void deleteClient(String id){
 	    ClientDTO delete=null;
 		for(ClientDTO data1:data){
 			if(data1.getId().equals(id)){

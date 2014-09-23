@@ -36,12 +36,12 @@ import java.io.Serializable;
  */
 public class ClientpurchasedGiftCardsEntityId implements Serializable{
 
-    private Long clientId;
+    private String clientId;
     private Long purchasedGiftCardsId;
 
     @Override
     public int hashCode() {
-        return (int) (clientId + purchasedGiftCardsId);
+        return (int) (Integer.parseInt(clientId) + purchasedGiftCardsId);
     }
 
     @Override
