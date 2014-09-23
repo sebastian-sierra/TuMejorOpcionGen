@@ -1,22 +1,92 @@
-<div ng-controller="FriendsController as controller" >   
-    
-    <button ng-click="redirectToPurchasedGiftCards()">Ver bonos comprados</button>
-    
-    <br>Bienvenido {{me.first_name}} ! 
-    
-    <br>Estos son tus amigos, selecciona alguno para ver qué le gusta!
-    
-    <br>
-    <table>
-        <tr>
-            <th></th><th>Amigo</th><th>Comprar bono</th>
-        </tr>
-        <tr data-ng-repeat="friend in friends">
-            
-            <td>Foto</td>
-            <td>{{friend.name}}</td>
-            <td><button ng-click="didSelectFriend(friend)">Elegir amigo</button></td>
-            
-        </tr>
-    </table>
+<div ng-controller="FriendsController as controller">   
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">TuMejorOpcion.com</a>
+            </div>
+
+
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+
+    <!-- Team Section -->
+    <section class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Hola {{me.name}}!</h2>
+                    <h3 class="section-subheading text-muted">Estos son tus amigos, selecciona alguno para ver qué le gusta!</h3>
+                </div>
+            </div>
+            <div class="row">
+                
+              <div class="col-md-8 col-md-offset-2">
+
+                <table class="table table-bordered table-striped">
+
+
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Nombre</th>
+                            <th>Seleccionar</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr data-ng-repeat="friend in friends">
+                            <td><img src = "{{friend.url}}"></td>
+                            <td>{{friend.name}}</td>
+                            <td><button ng-click="didSelectFriend(friend)">Elegir amigo</button></td>
+                        </tr>
+                    </tbody>
+
+
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; TuMejorOpcion.com 2014</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
