@@ -29,24 +29,24 @@ module.controller('GiftCardsController',['DataService','$window','$scope', '$htt
         $window.location.href = '#/completedPurchase';
     };
     
-    $scope.buySelectedGiftCard = function()
+    $scope.buySelectedGiftCard = function(giftCard)
     {
         var controller = this;
         
         var putData = 
-        {
-            
-            clientEntity: {
-                    id: DataService.me.id
+        {  
+            clientEntity: 
+            {
+                id: DataService.me.id
             },
             
-            createpurchasedGiftCards: {
-                    value:$scope.value,
-                    dateCreated: new Date().getDay()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear(),
-                    destinaryId: DataService.selectedFriend.id 
+            createpurchasedGiftCards:
+            {
+                value:$scope.value,
+                shopId: giftCard.shop.id,
+                dateCreated: new Date().getDay()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear(),
+                destinaryId: DataService.selectedFriend.id 
             }
-        ,
-            
         };
         
         $http.put('http://localhost:8080/tuMejorOpcion.web/webresources/ClientMaster/'+DataService.me.id, putData).

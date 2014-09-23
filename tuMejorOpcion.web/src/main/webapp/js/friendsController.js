@@ -12,21 +12,25 @@ module.controller('FriendsController',['$window','$scope', '$http', 'DataService
         console.log("redirecting...");
         $window.location.href = '#/giftCards';
     };
+    
+    $scope.redirectToPurchasedGiftCards = function ()
+    {
+        console.log("redirecting...");
+        $window.location.href = '#/purchasedGiftCards';
+    };
                     
     $scope.didSelectFriend = function(friend)
     {
         console.log(friend.id);
         var controller = self;
         
-        $http.get('http://localhost:8080/tuMejorOpcion.web/webresources/Shop').
-        success
-           (function(data) {
-            
+        $http.get('http://localhost:8080/tuMejorOpcion.web/webresources/Shop/').
+        success(function(data) 
+        {       
             console.log(data);
-            
-            DataService.shops = [{name:"Nike", id:0},{name:"Adidas", id:1}]/*data*/;
-            DataService.selectedFriend = friend;
-            DataService.selectedFriendApplicableShops.push(DataService.shops[0]); //PRUEBAS        
+    
+            DataService.shops = data;
+            DataService.selectedFriend = friend;     
                            
             FB.api("/"+ friend.id +"/likes", function (friendLikesResponse) 
             {
