@@ -36,10 +36,11 @@ module.controller('LoginController',['$scope','$window','$location','DataService
     {
         var controller = this;
         
-        function Friend(name, id)
+        function Friend(name, id, url)
         {
             this.name = name;
             this.id = id;
+            this.url = url
         }
         
         FB.api("/me/friends", function (friendsResponse) 
@@ -52,8 +53,15 @@ module.controller('LoginController',['$scope','$window','$location','DataService
                 {
                     var friend = friendsResponse.data[i]; 
                     console.log(friend.name);
+                    
+                    FB.api("/"+friend.id+"/picture", function(pictureResponse)
+                    {
+                      var picture = pictureResponse.data.url;
+                      DataService.friends.push(new Friend(friend.name, friend.id, picture));
+                      console.log(DataService.friends);
+                    });
 
-                    DataService.friends.push(new Friend(friend.name.toLowerCase(), friend.id));
+                    
                 }
                 
                 FB.api("/me", function (me) 
