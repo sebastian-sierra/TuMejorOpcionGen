@@ -24,6 +24,7 @@ clienteWebApp.factory('DataService', function ()
     dataService.shops = [];
     dataService.friends = [];
     dataService.selectedFriendApplicableShops = [];
+    dataService.purchasedGiftCards = [];
     
     return dataService;
 });

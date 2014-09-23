@@ -36,13 +36,6 @@ module.controller('LoginController',['$scope','$window','$location','DataService
     {
         var controller = this;
         
-        function Friend(name, id, url)
-        {
-            this.name = name;
-            this.id = id;
-            this.url = url
-        }
-        
         FB.api("/me/friends", function (friendsResponse) 
         {                
             if (friendsResponse && !friendsResponse.error) 
@@ -50,18 +43,18 @@ module.controller('LoginController',['$scope','$window','$location','DataService
                 console.log(friendsResponse);
 
                 for (var i in friendsResponse.data) 
-                {
-                    var friend = friendsResponse.data[i]; 
-                    console.log(friend.name);
-                    
-                    FB.api("/"+friend.id+"/picture", function(pictureResponse)
-                    {
-                      var picture = pictureResponse.data.url;
-                      DataService.friends.push(new Friend(friend.name, friend.id, picture));
-                      console.log(DataService.friends);
-                    });
-
-                    
+                {           
+                    (function() {
+                        var index = i;
+                        var currentFriend = friendsResponse.data[index]; 
+                        
+                        FB.api("/"+currentFriend.id+"/picture", function(pictureResponse)
+                        {
+                            currentFriend.url = pictureResponse.data.url;
+                            DataService.friends.push(currentFriend);
+                            console.log(currentFriend);
+                        });
+                    })();
                 }
                 
                 FB.api("/me", function (me) 

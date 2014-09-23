@@ -7,7 +7,7 @@ module.controller('GiftCardsController',['DataService','$window','$scope', '$htt
     $scope.selectedGiftCard = null;     
     $scope.giftCards = [];
     
-    $scope.value = 20000;
+    $scope.formData = {};
     
     function GiftCard(shop, price)
     {
@@ -42,7 +42,7 @@ module.controller('GiftCardsController',['DataService','$window','$scope', '$htt
             
             createpurchasedGiftCards:
             {
-                value:$scope.value,
+                value:$scope.formData.value,
                 shopId: giftCard.shop.id,
                 dateCreated: new Date().getDay()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear(),
                 destinaryId: DataService.selectedFriend.id 
