@@ -39,7 +39,7 @@ import co.edu.uniandes.csw.co.fantasticos.shop.persistence.api._IShopPersistence
 import co.edu.uniandes.csw.co.fantasticos.shop.persistence.converter.ShopConverter;
 import co.edu.uniandes.csw.co.fantasticos.shop.persistence.entity.ShopEntity;
 
-public abstract class _ShopPersistence implements _IShopPersistence {
+/*public abstract class _ShopPersistence implements _IShopPersistence {
 
   	@PersistenceContext(unitName="tuMejorOpcionPU")
  
@@ -71,4 +71,4 @@ public abstract class _ShopPersistence implements _IShopPersistence {
 		ShopConverter.entity2PersistenceDTO(entity);
 	}
 
-}
+}*/

@@ -29,14 +29,12 @@
 package co.edu.uniandes.csw.co.fantasticos.shop.persistence;
 
 import javax.ejb.Stateless;
-import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.co.fantasticos.shop.persistence.api.IShopPersistence;
 import javax.ejb.LocalBean;
 
-@Default
-@Stateless 
+/*@Stateless 
 @LocalBean
 public class ShopPersistence extends _ShopPersistence  implements IShopPersistence {
 
-}
+}*/

@@ -32,11 +32,21 @@ import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.co.fantasticos.client.persistence.api.IClientPersistence;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
+import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.LocalBean;
 
 @Default
 @Stateless 
 @LocalBean
-public class ClientPersistence extends _ClientPersistence  implements IClientPersistence {
-
+public class ClientPersistence extends _ClientPersistence  implements IClientPersistence 
+{   
+    public ClientPersistence() 
+    {
+    }   
 }

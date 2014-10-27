@@ -38,11 +38,15 @@ import co.edu.uniandes.csw.co.fantasticos.client.logic.dto.ClientDTO;
 import co.edu.uniandes.csw.co.fantasticos.client.persistence.api._IClientPersistence;
 import co.edu.uniandes.csw.co.fantasticos.client.persistence.converter.ClientConverter;
 import co.edu.uniandes.csw.co.fantasticos.client.persistence.entity.ClientEntity;
+import com.mongodb.MongoClient;
+import com.mongodb.ServerAddress;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public abstract class _ClientPersistence implements _IClientPersistence {
-
+public abstract class _ClientPersistence implements _IClientPersistence 
+{     
   	@PersistenceContext(unitName="tuMejorOpcionPU")
- 
 	protected EntityManager entityManager;
 	
 	public ClientDTO createClient(ClientDTO client) {
