@@ -47,7 +47,7 @@ clienteWebApp.config(['$routeProvider', '$httpProvider',
       }).
       when('/friends', {
         templateUrl: 'partials/friends.html',
-        //controller: 'FriendsController'
+        controller: 'FriendsController'
       }).
       when('/giftCards', {
         templateUrl: 'partials/giftCards.html',
@@ -61,8 +61,13 @@ clienteWebApp.config(['$routeProvider', '$httpProvider',
         templateUrl: 'partials/completedPurchase.html',
         controller: 'CompletedPurchaseController'
       }).
+      when('/redeem/:giftCardID', {
+        templateUrl: 'partials/redeem.html',
+        controller: 'RedeemController'
+      }).
       otherwise({
-        redirectTo: '/login'
+        redirectTo: '/login',
+        controller: 'LoginController'
       });
   }]);
   

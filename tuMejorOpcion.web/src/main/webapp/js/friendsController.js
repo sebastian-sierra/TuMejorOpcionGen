@@ -31,8 +31,6 @@ module.controller('FriendsController',['$window','$scope', '$http', 'DataService
                         console.log(receiver);
                         closureGiftCard.receiver = receiver;
                         DataService.purchasedGiftCards.push(closureGiftCard);
-
-
                     });
                 }); 
             })();

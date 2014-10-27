@@ -70,7 +70,7 @@ public abstract class _GiftCardService {
 	}
 	
 	@PUT
-    @Path("{id}")
+        @Path("{id}")
 	public void updateGiftCard(@PathParam("id") Long id, GiftCardDTO giftCard){
 		giftCardLogicService.updateGiftCard(giftCard);
 	}

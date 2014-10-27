@@ -28,11 +28,14 @@
 
 package co.edu.uniandes.csw.co.fantasticos.giftcard.service;
 
+import co.edu.uniandes.csw.co.fantasticos.giftcard.logic.dto.GiftCardDTO;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -42,5 +45,11 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class GiftCardService extends _GiftCardService {
 
-
+    @GET
+    @Path("redeem/{id}")
+    public GiftCardDTO redeemGiftCard(@PathParam("id") Long id)
+    {
+        GiftCardDTO giftCardDTO = giftCardLogicService.getGiftCard(id);
+        return giftCardDTO;
+    }
 }
