@@ -49,11 +49,11 @@ public abstract class _ShopLogicService implements _IShopLogicService {
 		return persistance.getShops(); 
 	}
 
-	public ShopDTO getShop(Long id){
+	public ShopDTO getShop(String id){
 		return persistance.getShop(id); 
 	}
 
-	public void deleteShop(Long id){
+	public void deleteShop(String id){
 	    persistance.deleteShop(id); 
 	}
 

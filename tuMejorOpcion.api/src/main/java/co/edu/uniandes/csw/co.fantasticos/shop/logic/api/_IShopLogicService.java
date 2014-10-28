@@ -36,8 +36,8 @@ public interface _IShopLogicService {
 
 	public ShopDTO createShop(ShopDTO detail);
 	public List<ShopDTO> getShops();
-	public ShopDTO getShop(Long id);
-	public void deleteShop(Long id);
+	public ShopDTO getShop(String id);
+	public void deleteShop(String id);
 	public void updateShop(ShopDTO detail);
 	
 }

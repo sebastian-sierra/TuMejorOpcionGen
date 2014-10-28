@@ -54,7 +54,7 @@ public abstract class _ShopService {
 	
 	@DELETE
 	@Path("{id}")
-	public void deleteShop(@PathParam("id") Long id){
+	public void deleteShop(@PathParam("id") String id){
 		shopLogicService.deleteShop(id);
 	}
 	
@@ -65,7 +65,7 @@ public abstract class _ShopService {
 	
 	@GET
 	@Path("{id}")
-	public ShopDTO getShop(@PathParam("id") Long id){
+	public ShopDTO getShop(@PathParam("id") String id){
 		return shopLogicService.getShop(id);
 	}
 	

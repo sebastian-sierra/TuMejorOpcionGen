@@ -49,7 +49,7 @@ public abstract class _GiftCardDTO {
 	private String dateCreated;
 	
 
-	private Long shopId;
+	private String shopId;
 	
 
 	private String destinaryId;
@@ -92,11 +92,11 @@ public abstract class _GiftCardDTO {
 	}
 
 
-	public Long getShopId() {
+	public String getShopId() {
 		return shopId;
 	}
  
-	public void setShopId(Long shopid) {
+	public void setShopId(String shopid) {
 		this.shopId = shopid;
 	}
 

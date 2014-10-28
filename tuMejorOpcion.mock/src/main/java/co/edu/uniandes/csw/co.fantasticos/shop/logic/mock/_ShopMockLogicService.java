@@ -40,16 +40,16 @@ public abstract class _ShopMockLogicService implements _IShopLogicService {
 
 	public ShopDTO createShop(ShopDTO shop){
 		id++;
-		shop.setId(id);
+		shop.setId(id.toString());
 		data.add(shop);
 		return shop;
-    }
+        }
 
 	public List<ShopDTO> getShops(){
 		return data; 
 	}
 
-	public ShopDTO getShop(Long id){
+	public ShopDTO getShop(String id){
 		for(ShopDTO data1:data){
 			if(data1.getId().equals(id)){
 				return data1;
@@ -58,7 +58,7 @@ public abstract class _ShopMockLogicService implements _IShopLogicService {
 		return null;
 	}
 
-	public void deleteShop(Long id){
+	public void deleteShop(String id){
 	    ShopDTO delete=null;
 		for(ShopDTO data1:data){
 			if(data1.getId().equals(id)){

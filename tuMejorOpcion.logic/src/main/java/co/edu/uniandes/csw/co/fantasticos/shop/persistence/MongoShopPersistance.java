@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -76,7 +77,7 @@ public class MongoShopPersistance implements IShopPersistence
                 DBObject object = cursor.next();
                 
                 ShopDTO dto = new ShopDTO();
-                dto.setId((Long) object.get("id"));
+                dto.setId(((ObjectId)object.get("_id")).toHexString());
                 dto.setName((String) object.get("name"));
                 dto.setAddress((String) object.get("address"));
                 
@@ -90,25 +91,25 @@ public class MongoShopPersistance implements IShopPersistence
         }
     }
 
-    public ShopDTO getShop(Long id) 
+    public ShopDTO getShop(String id) 
     {
         DBCollection coll = db.getCollection("shops");
-        BasicDBObject query = new BasicDBObject("id", id);
+        BasicDBObject query = new BasicDBObject("_id", new ObjectId(id));
 
         DBObject object = coll.findOne(query);
         
         ShopDTO dto = new ShopDTO();
-        dto.setId((Long) object.get("id"));
+        dto.setId(((ObjectId)object.get("_id")).toHexString());
         dto.setName((String) object.get("name"));
         dto.setAddress((String) object.get("address"));
         
         return dto;
     }
 
-    public void deleteShop(Long id)
+    public void deleteShop(String id)
     {
         DBCollection coll = db.getCollection("shops");
-        BasicDBObject query = new BasicDBObject("id", id);
+        BasicDBObject query = new BasicDBObject("_id", new ObjectId(id));
 
         DBObject object = coll.findOne(query);
 	coll.remove(object);

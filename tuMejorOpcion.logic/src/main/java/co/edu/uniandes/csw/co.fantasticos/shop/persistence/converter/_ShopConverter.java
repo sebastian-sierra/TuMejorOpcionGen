@@ -44,7 +44,7 @@ public abstract class _ShopConverter {
 	public static ShopDTO entity2PersistenceDTO(ShopEntity entity){
 		if (entity != null) {
 			ShopDTO dto = new ShopDTO();
-					dto.setId(entity.getId());
+					dto.setId(entity.getId().toString());
 					dto.setName(entity.getName());
 					dto.setAddress(entity.getAddress());
 			return dto;
@@ -56,7 +56,7 @@ public abstract class _ShopConverter {
 	public static ShopEntity persistenceDTO2Entity(ShopDTO dto){
 		if(dto!=null){
 			ShopEntity entity=new ShopEntity();
-					entity.setId(dto.getId());
+					entity.setId(Long.parseLong(dto.getId()));
 			
 					entity.setName(dto.getName());
 			
