@@ -71,7 +71,7 @@ module.controller('LoginController',['$scope','$window','$location','DataService
                     
                     var request = $http({
                         method: "post",
-                        url: "http://localhost:8080/tuMejorOpcion.web/webresources/Client/",
+                        url: "https://localhost:8181/tuMejorOpcion.web/webresources/Client/",
                         //transformRequest: transformRequestAsFormPost,
                         data: postData
                     });

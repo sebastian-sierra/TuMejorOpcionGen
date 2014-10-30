@@ -53,6 +53,8 @@ public abstract class _GiftCardDTO {
 	
 
 	private String destinaryId;
+        
+        private Boolean redimido;
 
 
 
@@ -108,5 +110,15 @@ public abstract class _GiftCardDTO {
 	public void setDestinaryId(String destinaryid) {
 		this.destinaryId = destinaryid;
 	}
+
+    public Boolean getRedimido() {
+        return redimido;
+    }
+
+    public void setRedimido(Boolean redimido) {
+        this.redimido = redimido;
+    }
+        
+        
 	
 }

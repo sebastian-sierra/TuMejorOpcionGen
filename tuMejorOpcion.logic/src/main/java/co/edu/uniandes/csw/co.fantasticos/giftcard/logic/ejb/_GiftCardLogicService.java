@@ -33,20 +33,24 @@ import javax.inject.Inject;
 import co.edu.uniandes.csw.co.fantasticos.giftcard.logic.dto.GiftCardDTO;
 import co.edu.uniandes.csw.co.fantasticos.giftcard.logic.api._IGiftCardLogicService;
 import co.edu.uniandes.csw.co.fantasticos.giftcard.persistence.api.IGiftCardPersistence;
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.*;
 
+@DeclareRoles({"Admin"}) 
+@RolesAllowed({"Admin"})
 public abstract class _GiftCardLogicService implements _IGiftCardLogicService {
 
 	@Inject
 	protected IGiftCardPersistence persistance;
-
+    
 	public GiftCardDTO createGiftCard(GiftCardDTO giftCard){
 		return persistance.createGiftCard( giftCard); 
-    }
-
+        }
+        
 	public List<GiftCardDTO> getGiftCards(){
 		return persistance.getGiftCards(); 
 	}
-
+        
 	public GiftCardDTO getGiftCard(Long id){
 		return persistance.getGiftCard(id); 
 	}

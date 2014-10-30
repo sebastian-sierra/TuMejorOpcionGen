@@ -8,7 +8,7 @@ module.controller('FriendsController',['$window','$scope', '$http', 'DataService
     $scope.friends = DataService.friends;
     $scope.selectedFriend = DataService.selectedFriend;
     
-    $http.get('http://localhost:8080/tuMejorOpcion.web/webresources/ClientMaster/'+DataService.me.id).
+    $http.get('https://localhost:8181/tuMejorOpcion.web/webresources/ClientMaster/'+DataService.me.id).
     success(function(response) 
     {
         console.log(response);
@@ -21,7 +21,7 @@ module.controller('FriendsController',['$window','$scope', '$http', 'DataService
             (function(){                  
                 var closureGiftCard = giftCard;
 
-                $http.get('http://localhost:8080/tuMejorOpcion.web/webresources/Shop/'+closureGiftCard.shopId).
+                $http.get('https://localhost:8181/tuMejorOpcion.web/webresources/Shop/'+closureGiftCard.shopId).
                 success(function(shop) 
                 {
                     closureGiftCard.shop = shop;
@@ -54,7 +54,7 @@ module.controller('FriendsController',['$window','$scope', '$http', 'DataService
         console.log(friend.id);
         var controller = self;
         
-        $http.get('http://localhost:8080/tuMejorOpcion.web/webresources/Shop/').
+        $http.get('https://localhost:8181/tuMejorOpcion.web/webresources/Shop/').
         success(function(data) 
         {       
             console.log(data);
