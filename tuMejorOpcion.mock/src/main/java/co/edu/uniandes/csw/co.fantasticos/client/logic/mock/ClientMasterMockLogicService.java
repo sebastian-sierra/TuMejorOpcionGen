@@ -31,7 +31,13 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.co.fantasticos.client.master.logic.api.IClientMasterLogicService;
+import co.edu.uniandes.csw.co.fantasticos.shop.logic.dto.ShopDTO;
+import java.util.List;
 @Singleton
 public class ClientMasterMockLogicService extends _ClientMasterMockLogicService implements IClientMasterLogicService {
+
+    public List<ShopDTO> getLikesFromClient(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

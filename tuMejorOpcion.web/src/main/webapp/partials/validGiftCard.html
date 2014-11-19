@@ -1,0 +1,85 @@
+<div>
+    <!-- Team Section -->
+    <section class="bg-light-gray">
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="alert alert-success" role="alert" ng-show="redeemed">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <strong>Perfecto!</strong> El bono ID ha sido redimido.
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h5 class="section-heading">Aqui esta el bono encontrado</h5>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-6 col-md-offset-3">
+
+                    <div>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Bono</th>
+
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            <tr>
+                                <td>
+                                    <ul style="list-style-type:none">
+                                        <li> Para: {{validGiftCard.destinaryId}} </li>
+                                        <li> Tienda: {{validGiftCard.shopId}} </li>
+                                        <li> ${{validGiftCard.value}} </li>
+                                        <li> ID: {{validGiftCard.id}} </li>
+                                        <li> Fecha: {{validGiftCard.dateCreated}} </li>
+                                        <li ng-show="!validGiftCard.redimido">Sin redimir</li>
+                                        <li ng-show="validGiftCard.redimido">Redimido</li>
+                                    </ul>
+                                </td>
+
+                            </tr>
+                            <tr ng-hide="validGiftCard.redimido">
+                                <td><button ng-click="redeemGiftCard()">Redimir</button></td>
+                            </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; TuMejorOpcion.com 2014</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>

@@ -44,12 +44,13 @@ module.controller('GiftCardsController',['DataService','$window','$scope', '$htt
             {
                 value:$scope.formData.value,
                 shopId: giftCard.shop.id,
-                dateCreated: new Date().getDay()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear(),
-                destinaryId: DataService.selectedFriend.id 
+                dateCreated: new Date().getDate()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear(),
+                destinaryId: DataService.selectedFriend.id,
+                redimido: false
             }
         };
         
-        $http.put('http://localhost:8080/tuMejorOpcion.web/webresources/ClientMaster/'+DataService.me.id, putData).
+        $http.put('https://localhost:8181/tuMejorOpcion.web/webresources/ClientMaster/'+DataService.me.id, putData).
         success(function(response) 
         {
             console.log(response);

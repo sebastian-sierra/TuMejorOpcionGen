@@ -30,6 +30,8 @@
 package co.edu.uniandes.csw.co.fantasticos.client.master.logic.ejb;
 
 import co.edu.uniandes.csw.co.fantasticos.client.master.logic.api.IClientMasterLogicService;
+import co.edu.uniandes.csw.co.fantasticos.shop.logic.dto.ShopDTO;
+import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
@@ -38,5 +40,9 @@ import javax.enterprise.inject.Default;
 @Stateless
 @LocalBean
 public class ClientMasterLogicService extends _ClientMasterLogicService implements IClientMasterLogicService {
+
+    public List<ShopDTO> getLikesFromClient(String id) {
+        return clientMasterPersistance.getClientshopsEntityList(id);
+    }
 
 }

@@ -30,6 +30,7 @@ package co.edu.uniandes.csw.co.fantasticos.client.master.logic.dto;
 
 import co.edu.uniandes.csw.co.fantasticos.giftcard.logic.dto.GiftCardDTO;
 import co.edu.uniandes.csw.co.fantasticos.client.logic.dto.ClientDTO;
+import co.edu.uniandes.csw.co.fantasticos.shop.logic.dto.ShopDTO;
 
 import java.util.List;
 
@@ -62,10 +63,14 @@ public abstract class _ClientMasterDTO {
     public List<GiftCardDTO> createpurchasedGiftCards;
     public List<GiftCardDTO> updatepurchasedGiftCards;
     public List<GiftCardDTO> deletepurchasedGiftCards;
-    public List<GiftCardDTO> listpurchasedGiftCards;	
+    public List<GiftCardDTO> listpurchasedGiftCards;
+    
+    public List<ShopDTO> createshops;
+    public List<ShopDTO> updateshops;
+    public List<ShopDTO> deleteshops;
+    public List<ShopDTO> listshops;	
 	
-	
-	
+		
     public List<GiftCardDTO> getCreatepurchasedGiftCards(){ return createpurchasedGiftCards; };
     public void setCreatepurchasedGiftCards(List<GiftCardDTO> createpurchasedGiftCards){ this.createpurchasedGiftCards=createpurchasedGiftCards; };
     public List<GiftCardDTO> getUpdatepurchasedGiftCards(){ return updatepurchasedGiftCards; };
@@ -74,7 +79,15 @@ public abstract class _ClientMasterDTO {
     public void setDeletepurchasedGiftCards(List<GiftCardDTO> deletepurchasedGiftCards){ this.deletepurchasedGiftCards=deletepurchasedGiftCards; };
     public List<GiftCardDTO> getListpurchasedGiftCards(){ return listpurchasedGiftCards; };
     public void setListpurchasedGiftCards(List<GiftCardDTO> listpurchasedGiftCards){ this.listpurchasedGiftCards=listpurchasedGiftCards; };	
-	
+    
+    public List<ShopDTO> getCreateshops(){ return createshops; };
+    public void setCreateshops(List<ShopDTO> createshops){ this.createshops=createshops; };
+    public List<ShopDTO> getUpdateshops(){ return updateshops; };
+    public void setUpdateshops(List<ShopDTO> updateshops){ this.updateshops=updateshops; };
+    public List<ShopDTO> getDeleteshops(){ return deleteshops; };
+    public void setDeleteshops(List<ShopDTO> deleteshops){ this.deleteshops=deleteshops; };
+    public List<ShopDTO> getListshops(){ return listshops; };
+    public void setListshops(List<ShopDTO> listshops){ this.listshops=listshops; };
 	
 }
 

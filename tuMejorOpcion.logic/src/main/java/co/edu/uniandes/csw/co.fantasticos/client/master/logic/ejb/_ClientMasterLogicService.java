@@ -35,6 +35,7 @@ import co.edu.uniandes.csw.co.fantasticos.client.master.logic.api._IClientMaster
 import co.edu.uniandes.csw.co.fantasticos.client.master.logic.dto.ClientMasterDTO;
 import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.api.IClientMasterPersistence;
 import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientpurchasedGiftCardsEntity;
+import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientshopsEntity;
 import co.edu.uniandes.csw.co.fantasticos.client.persistence.api.IClientPersistence;
 import co.edu.uniandes.csw.co.fantasticos.shop.logic.dto.ShopDTO;
 import co.edu.uniandes.csw.co.fantasticos.shop.persistence.api.IShopPersistence;
@@ -61,6 +62,14 @@ public abstract class _ClientMasterLogicService implements _IClientMasterLogicSe
                 clientMasterPersistance.createClientpurchasedGiftCardsEntity(clientGiftCardEntity);
             }
         }
+        
+        if (client.getCreateshops() != null) {
+            for (ShopDTO shopDTO : client.getCreateshops()) {
+                ShopDTO createdShopDTO = shopPersistance.createShop(shopDTO);
+                ClientshopsEntity clientShopEntity = new ClientshopsEntity(persistedClientDTO.getId(), createdShopDTO.getId());
+                clientMasterPersistance.createClientshopsEntity(clientShopEntity);
+            }
+        }
         // update giftCard
         if (client.getUpdatepurchasedGiftCards() != null) {
             for (GiftCardDTO giftCardDTO : client.getUpdatepurchasedGiftCards()) {
@@ -69,6 +78,15 @@ public abstract class _ClientMasterLogicService implements _IClientMasterLogicSe
                 clientMasterPersistance.createClientpurchasedGiftCardsEntity(clientGiftCardEntity);
             }
         }
+        // update shop
+        if (client.getUpdateshops() != null) {
+            for (ShopDTO shopDTO : client.getUpdateshops()) {
+                shopPersistance.updateShop(shopDTO);
+                ClientshopsEntity clientShopEntity = new ClientshopsEntity(persistedClientDTO.getId(), shopDTO.getId());
+                clientMasterPersistance.createClientshopsEntity(clientShopEntity);
+            }
+        }
+        
         return client;
     }
 
@@ -108,6 +126,30 @@ public abstract class _ClientMasterLogicService implements _IClientMasterLogicSe
             for (GiftCardDTO giftCardDTO : client.getDeletepurchasedGiftCards()) {
                 clientMasterPersistance.deleteClientpurchasedGiftCardsEntity(client.getClientEntity().getId(), giftCardDTO.getId());
                 giftCardPersistance.deleteGiftCard(giftCardDTO.getId());
+            }
+        }
+        
+        // delete shop
+        if (client.getDeleteshops() != null) {
+            for (ShopDTO shopDTO : client.getDeleteshops()) {
+                clientMasterPersistance.deleteClientshopsEntity(client.getClientEntity().getId(), shopDTO.getId());
+            }
+        }
+        // persist new shop
+        if (client.getCreateshops() != null) {
+            for (ShopDTO shopDTO : client.getCreateshops()) {
+                ClientshopsEntity clientShopEntity = new ClientshopsEntity(client.getClientEntity().getId(), shopDTO.getId());
+                clientMasterPersistance.createClientshopsEntity(clientShopEntity);
+            }
+        }
+        // update shop
+        if (client.getUpdateshops() != null) {
+            for (ShopDTO shopDTO : client.getUpdateshops()) {
+                clientMasterPersistance.deleteClientshopsEntity(client.getClientEntity().getId(), shopDTO.getId());
+                shopPersistance.updateShop(shopDTO);
+                ClientshopsEntity clientShopEntity = new ClientshopsEntity(client.getId(), shopDTO.getId());
+                clientMasterPersistance.createClientshopsEntity(clientShopEntity);
+                
             }
         }
     }

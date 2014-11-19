@@ -39,5 +39,5 @@ public interface _IClientLogicService {
 	public ClientDTO getClient(String id);
 	public void deleteClient(String id);
 	public void updateClient(ClientDTO detail);
-	
+        
 }

@@ -49,6 +49,7 @@ public abstract class _GiftCardConverter {
 					dto.setId(entity.getId());
 					dto.setName(entity.getName());
 					dto.setValue(entity.getValue());
+                                        dto.setRedimido(entity.getRedimido());
  
 			    if(entity.getDateCreated() != null){
 					dto.setDateCreated(DATE_FORMAT.format(entity.getDateCreated()));
@@ -69,6 +70,7 @@ public abstract class _GiftCardConverter {
 					entity.setName(dto.getName());
 			
 					entity.setValue(dto.getValue());
+                                        entity.setRedimido(dto.getRedimido());
 			
  
 			      try{ 

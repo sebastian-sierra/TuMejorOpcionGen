@@ -1,4 +1,26 @@
-<div>           
+<div>
+    
+    <nav class="navbar navbar-default navbar-fixed-top navbar-shrink" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">TuMejorOpcion</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/friends" >Mis Amigos</a></li>
+                    <li><a href="#/purchasedGiftCards">Bonos Comprados</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
     <!-- Team Section -->
     <section class="bg-light-gray">
         <div class="container">
@@ -8,50 +30,50 @@
                 </div>
             </div>
             <div class="row">
-                
+
                 <div class="col-md-8 col-md-offset-2">
-                    
+
                     <table class="table table-bordered table-striped">
                         <thead>
-                            <tr>
-                                <th>Tienda</th>
-                                <th>Seleccionar</th>
-                            </tr>
+                        <tr>
+                            <th>Tienda</th>
+                            <th>Seleccionar</th>
+                        </tr>
                         </thead>
-                            
-                        <tbody>   
-                            
-                            <tr data-ng-repeat="giftCard in giftCards">
-                                <div>
-                                    <td>{{giftCard.shop.name}}</td>
-                                    <td ng-hide="giftCard.selected">
-                                        <button type="button" class="btn btn-primary" ng-click="giftCard.selected = true">Comprar</button>
-                                    </td>  
-                                        
-                                    <td ng-show="giftCard.selected">
-                                        <div style="width: 100%; overflow: hidden;">
-                                            <div class="input-group" style="width:400px; float: left;">
-                                                <span class="input-group-addon">$</span>
-                                                <input type="text" ng-model="formData.value" class="form-control">
-                                                <span class="input-group-addon">.00</span>                                   
-                                            </div>
-                                            <div style="margin-left: 25px;">
-                                                <button type="button" class="btn btn-danger" ng-click="giftCard.selected = false">Cerrar</button>  
-                                                <button type="button" class="btn btn-primary" ng-click="buySelectedGiftCard(giftCard)">Comprar</button> 
-                                            </div>
+
+                        <tbody>
+
+                        <tr data-ng-repeat="giftCard in giftCards">
+                            <div>
+                                <td>{{giftCard.shop.name}}</td>
+                                <td ng-hide="giftCard.selected">
+                                    <button type="button" class="btn btn-primary" ng-click="giftCard.selected = true">Comprar</button>
+                                </td>
+
+                                <td ng-show="giftCard.selected">
+                                    <div style="width: 100%; overflow: hidden;">
+                                        <div class="input-group" style="width:400px; float: left;">
+                                            <span class="input-group-addon">$</span>
+                                            <input type="text" ng-model="formData.value" class="form-control">
+                                            <span class="input-group-addon">.00</span>
                                         </div>
-                                        
-                                    </td>                                           
-                                </div>
-                            </tr>
-                           
+                                        <div style="margin-left: 25px;">
+                                            <button type="button" class="btn btn-danger" ng-click="giftCard.selected = false">Cerrar</button>
+                                            <button type="button" class="btn btn-primary" ng-click="buySelectedGiftCard(giftCard)">Comprar</button>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </div>
+                        </tr>
+
                         </tbody>
-                            
+
                     </table>
                 </div>
             </div>
     </section>
-        
+
     <footer>
         <div class="container">
             <div class="row">

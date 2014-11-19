@@ -33,7 +33,10 @@ import co.edu.uniandes.csw.co.fantasticos.giftcard.persistence.converter.GiftCar
 import co.edu.uniandes.csw.co.fantasticos.client.logic.dto.ClientDTO;
 import co.edu.uniandes.csw.co.fantasticos.client.master.logic.dto.ClientMasterDTO;
 import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.api._IClientMasterPersistence;
+import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientshopsEntity;
 import co.edu.uniandes.csw.co.fantasticos.client.persistence.api.IClientPersistence;
+import co.edu.uniandes.csw.co.fantasticos.shop.logic.dto.ShopDTO;
+import co.edu.uniandes.csw.co.fantasticos.shop.persistence.converter.ShopConverter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -55,6 +58,7 @@ public class _ClientMasterPersistence implements _IClientMasterPersistence {
         ClientDTO client = clientPersistence.getClient(clientId);
         clientMasterDTO.setClientEntity(client);
         clientMasterDTO.setListpurchasedGiftCards(getClientpurchasedGiftCardsEntityList(clientId));
+        clientMasterDTO.setListshops(getClientshopsEntityList(clientId));
         return clientMasterDTO;
     }
 
@@ -80,6 +84,32 @@ public class _ClientMasterPersistence implements _IClientMasterPersistence {
                 entityManager.refresh(entity);
             }
             resp.add(GiftCardConverter.entity2PersistenceDTO(entity.getPurchasedGiftCardsIdEntity()));
+        }
+        return resp;
+    }
+    
+    public ClientshopsEntity createClientshopsEntity(ClientshopsEntity entity) {
+        entityManager.persist(entity);
+        return entity;
+    }
+    
+    public void deleteClientshopsEntity(String clientId, Long shopsId) {
+        Query q = entityManager.createNamedQuery("ClientshopsEntity.deleteClientshopsEntity");
+        q.setParameter("clientId", clientId);
+        q.setParameter("shopsId", shopsId);
+        q.executeUpdate();
+    }
+
+    public List<ShopDTO> getClientshopsEntityList(String clientId) {
+        ArrayList<ShopDTO> resp = new ArrayList<ShopDTO>();
+        Query q = entityManager.createNamedQuery("ClientshopsEntity.getByMasterId");
+        q.setParameter("clientId",clientId);
+        List<ClientshopsEntity> qResult =  q.getResultList();
+        for (ClientshopsEntity entity : qResult) { 
+            if(entity.getShopsIdEntity()==null){
+                entityManager.refresh(entity);
+            }
+            resp.add(ShopConverter.entity2PersistenceDTO(entity.getShopsIdEntity()));
         }
         return resp;
     }
