@@ -54,7 +54,7 @@ public class ClientshopsEntity implements Serializable {
     private String clientId;
     @Id
     @Column(name = "shopsId")
-    private Long shopsId;
+    private String shopsId;
     @ManyToOne
     @PrimaryKeyJoinColumn(name = "clientId", referencedColumnName = "id")
     @JoinFetch
@@ -67,7 +67,7 @@ public class ClientshopsEntity implements Serializable {
     public ClientshopsEntity() {
     }
 
-    public ClientshopsEntity(String clientId, Long shopsId) {
+    public ClientshopsEntity(String clientId, String shopsId) {
         this.clientId =clientId;
         this.shopsId = shopsId;
     }
@@ -80,11 +80,11 @@ public class ClientshopsEntity implements Serializable {
         this.clientId = clientId;
     }
 
-    public Long getShopsId() {
+    public String getShopsId() {
         return shopsId;
     }
 
-    public void setShopsId(Long shopsId) {
+    public void setShopsId(String shopsId) {
         this.shopsId = shopsId;
     }
 

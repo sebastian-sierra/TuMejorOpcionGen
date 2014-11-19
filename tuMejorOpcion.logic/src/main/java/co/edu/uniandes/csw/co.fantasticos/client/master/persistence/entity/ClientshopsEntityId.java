@@ -37,11 +37,11 @@ import java.io.Serializable;
 public class ClientshopsEntityId implements Serializable{
 
     private String clientId;
-    private Long shopsId;
+    private String shopsId;
 
     @Override
     public int hashCode() {
-        return (int) (Integer.parseInt(clientId) + shopsId);
+        return (int) (Integer.parseInt(clientId) + Integer.parseInt(shopsId));
     }
 
     @Override

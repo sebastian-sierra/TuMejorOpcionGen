@@ -156,7 +156,7 @@ module.controller('LoginController', ['$scope', '$window', '$location', 'DataSer
 
             var request = gapi.client.plus.people.list({
                 'userId': 'me',
-                'collection': 'connected' //Cambiar a connected
+                'collection': 'visible' //Cambiar a connected
             });
 
             request.execute(function(response) {

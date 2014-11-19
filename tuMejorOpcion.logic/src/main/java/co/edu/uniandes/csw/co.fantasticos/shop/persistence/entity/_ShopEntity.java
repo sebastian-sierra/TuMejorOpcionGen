@@ -41,15 +41,15 @@ public abstract class _ShopEntity {
 
 	@Id
 	@GeneratedValue(generator = "Shop")
-	private Long id;
+	private String id;
 	private String name;
 	private String address;
 
-	public Long getId(){
+	public String getId(){
 		return id;
 	}
 	
-	public void setId(Long id){
+	public void setId(String id){
 		this.id = id;
 	}
 	public String getName(){

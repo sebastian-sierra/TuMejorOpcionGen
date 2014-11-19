@@ -44,7 +44,7 @@ public interface _IClientMasterPersistence {
     public void deleteClientpurchasedGiftCardsEntity(String clientId, Long purchasedGiftCardsId);
     public List<GiftCardDTO> getClientpurchasedGiftCardsEntityList(String clientId);
     public ClientshopsEntity createClientshopsEntity(ClientshopsEntity entity);
-    public void deleteClientshopsEntity(String clientId, Long shopsId);
+    public void deleteClientshopsEntity(String clientId, String shopsId);
     public List<ShopDTO> getClientshopsEntityList(String clientId);
    
   
