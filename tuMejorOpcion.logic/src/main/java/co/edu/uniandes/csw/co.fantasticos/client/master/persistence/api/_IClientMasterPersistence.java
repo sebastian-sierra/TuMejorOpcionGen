@@ -31,6 +31,8 @@ package co.edu.uniandes.csw.co.fantasticos.client.master.persistence.api;
 import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientpurchasedGiftCardsEntity;
 import co.edu.uniandes.csw.co.fantasticos.giftcard.logic.dto.GiftCardDTO;
 import co.edu.uniandes.csw.co.fantasticos.client.master.logic.dto.ClientMasterDTO;
+import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientshopsEntity;
+import co.edu.uniandes.csw.co.fantasticos.shop.logic.dto.ShopDTO;
 import java.util.List;
 
 public interface _IClientMasterPersistence {
@@ -41,6 +43,9 @@ public interface _IClientMasterPersistence {
     public ClientpurchasedGiftCardsEntity createClientpurchasedGiftCardsEntity(ClientpurchasedGiftCardsEntity entity);
     public void deleteClientpurchasedGiftCardsEntity(String clientId, Long purchasedGiftCardsId);
     public List<GiftCardDTO> getClientpurchasedGiftCardsEntityList(String clientId);
+    public ClientshopsEntity createClientshopsEntity(ClientshopsEntity entity);
+    public void deleteClientshopsEntity(String clientId, Long shopsId);
+    public List<ShopDTO> getClientshopsEntityList(String clientId);
    
   
 }

@@ -1,34 +1,26 @@
 <div>   
 
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-shrink" role="navigation">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                
-                <button class="btn btn-default" ng-click="redirectToPurchasedGiftCards()">Ver bonos comprados</button>
-                
-                <a class="navbar-brand page-scroll" href="#page-top">TuMejorOpcion.com</a>
+                <a class="navbar-brand" href="#">TuMejorOpcion</a>
             </div>
-
-
-            <!-- /.navbar-collapse -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#/friends" >Mis Amigos</a></li>
+                    <li><a href="#/purchasedGiftCards">Bonos Comprados</a></li>
+                </ul>
+            </div>
         </div>
-        <!-- /.container-fluid -->
     </nav>
-    
+
 
     <!-- Header -->
 
@@ -42,31 +34,31 @@
                 </div>
             </div>
             <div class="row">
-                
-              <div class="col-md-8 col-md-offset-2">
 
-                <table class="table table-bordered table-striped">
+                <div class="col-md-8 col-md-offset-2">
+
+                    <table class="table table-bordered table-striped">
 
 
-                    <thead>
-                        <tr>
-                            <th>Foto</th>
-                            <th>Nombre</th>
-                            <th>Seleccionar</th>
-                        </tr>
-                    </thead>
+                        <thead>
+                            <tr>
+                                <th>Foto</th>
+                                <th>Nombre</th>
+                                <th>Seleccionar</th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        <tr data-ng-repeat="friend in friends">
-                            <td><img src = "{{friend.url}}"></td>
-                            <td>{{friend.name}}</td>
-                            <td><button class="btn btn-primary" ng-click="didSelectFriend(friend)">Elegir amigo</button></td>
-                        </tr>
-                    </tbody>
+                        <tbody>
+                            <tr data-ng-repeat="friend in friends">
+                                <td><img src = "{{friend.url}}"></td>
+                                <td>{{friend.name}}</td>
+                                <td><button class="btn btn-primary" ng-click="didSelectFriend(friend)">Elegir amigo</button></td>
+                            </tr>
+                        </tbody>
 
-                </table>
+                    </table>
+                </div>
             </div>
-        </div>
     </section>
 
     <footer>

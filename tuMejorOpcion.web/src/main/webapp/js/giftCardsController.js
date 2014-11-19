@@ -44,7 +44,7 @@ module.controller('GiftCardsController',['DataService','$window','$scope', '$htt
             {
                 value:$scope.formData.value,
                 shopId: giftCard.shop.id,
-                dateCreated: new Date().getDay()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear(),
+                dateCreated: new Date().getDate()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear(),
                 destinaryId: DataService.selectedFriend.id,
                 redimido: false
             }

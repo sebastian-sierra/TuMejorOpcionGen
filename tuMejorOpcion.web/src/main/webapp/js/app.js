@@ -12,7 +12,8 @@ var clienteWebApp = angular.module('phonecatApp', [
   'friends',
   'giftCards',
   'completedPurchase',
-  'purchasedGiftCards'
+  'purchasedGiftCards',
+  'directive.g+signin'
 ]);
 
 clienteWebApp.factory('DataService', function () 
@@ -25,6 +26,8 @@ clienteWebApp.factory('DataService', function ()
     dataService.friends = [];
     dataService.selectedFriendApplicableShops = [];
     dataService.purchasedGiftCards = [];
+    dataService.facebookOrGoogle = null;
+    dataService.myLikes = [];
     
     return dataService;
 });

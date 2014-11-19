@@ -38,6 +38,8 @@ import javax.inject.Inject;
 
 import co.edu.uniandes.csw.co.fantasticos.client.master.logic.api.IClientMasterLogicService;
 import co.edu.uniandes.csw.co.fantasticos.client.master.logic.dto.ClientMasterDTO;
+import co.edu.uniandes.csw.co.fantasticos.shop.logic.dto.ShopDTO;
+import java.util.List;
 
 public abstract class _ClientMasterService {
 
@@ -59,6 +61,13 @@ public abstract class _ClientMasterService {
     @Path("{id}")
     public ClientMasterDTO getClient(@PathParam("id") String id) {
         return clientLogicService.getMasterClient(id);
+    }
+    
+    @GET
+    @Path("likes/{id}")
+    public List<ShopDTO> getLikesFromClient(@PathParam("id") String id)
+    {
+        return clientLogicService.getLikesFromClient(id);
     }
 
     @PUT
