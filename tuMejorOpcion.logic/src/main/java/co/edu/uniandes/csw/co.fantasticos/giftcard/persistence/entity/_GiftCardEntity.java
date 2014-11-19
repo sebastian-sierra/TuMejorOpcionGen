@@ -45,7 +45,7 @@ public abstract class _GiftCardEntity {
     private Double value;
     @Temporal(TemporalType.DATE)
     private Date dateCreated;
-    private Long shopId;
+    private String shopId;
     private String destinaryId;
     private Boolean redimido;
 
@@ -81,11 +81,11 @@ public abstract class _GiftCardEntity {
         this.dateCreated = dateCreated;
     }
 
-    public Long getShopId() {
+    public String getShopId() {
         return shopId;
     }
 
-    public void setShopId(Long shopId) {
+    public void setShopId(String shopId) {
         this.shopId = shopId;
     }
 

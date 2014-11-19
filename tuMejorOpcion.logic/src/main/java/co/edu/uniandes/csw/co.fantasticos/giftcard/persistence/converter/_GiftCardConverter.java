@@ -54,7 +54,7 @@ public abstract class _GiftCardConverter {
 			    if(entity.getDateCreated() != null){
 					dto.setDateCreated(DATE_FORMAT.format(entity.getDateCreated()));
 				}	
-					dto.setShopId(entity.getShopId().toString());
+					dto.setShopId(entity.getShopId());
 					dto.setDestinaryId(entity.getDestinaryId());
 			return dto;
 		}else{
@@ -81,7 +81,7 @@ public abstract class _GiftCardConverter {
                         Logger.getLogger(_GiftCardConverter.class.getName()).log(Level.SEVERE, null, ex);
                   }	
 			
-					entity.setShopId(Long.valueOf(dto.getShopId()));
+					entity.setShopId(dto.getShopId());
 			
 					entity.setDestinaryId(dto.getDestinaryId());
 			
