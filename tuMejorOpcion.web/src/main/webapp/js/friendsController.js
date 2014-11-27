@@ -70,6 +70,21 @@ module.controller('FriendsController', ['$window', '$scope', '$http', '$cookies'
             }
 
         };
+        
+        $scope.selectedFriendFromFacebookOnGoogle = function(friend) {
+            
+            DataService.selectedFriend = friend;
+            DataService.selectedFriendApplicableShops = [];
+            
+            $http.get('https://localhost:8181/tuMejorOpcion.web/webresources/FriendMaster/'+friend.id).success(function (friendMaster) {
+
+                DataService.selectedFriendApplicableShops = friendMaster.listfacebookLikes;
+                
+                $scope.redirectToGiftCards();
+                
+            });
+            
+        }; 
 
         $scope.selectedFriendFromGoogle = function (friend) {
 
