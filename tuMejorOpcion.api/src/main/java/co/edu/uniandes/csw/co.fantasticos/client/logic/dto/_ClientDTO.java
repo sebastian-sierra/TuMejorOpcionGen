@@ -44,8 +44,11 @@ public abstract class _ClientDTO {
 	
 
 	private String email;
-
-
+        
+        private String idFacebook;
+	
+	private String idGoogle;
+        
 
 	public String getId() {
 		return id;
@@ -71,6 +74,23 @@ public abstract class _ClientDTO {
  
 	public void setEmail(String email) {
 		this.email = email;
+	}
+        
+	public String getIdFacebook() {
+		return idFacebook;
+	}
+ 
+	public void setIdFacebook(String idfacebook) {
+		this.idFacebook = idfacebook;
+	}
+
+
+	public String getIdGoogle() {
+		return idGoogle;
+	}
+ 
+	public void setIdGoogle(String idgoogle) {
+		this.idGoogle = idgoogle;
 	}
 	
 }

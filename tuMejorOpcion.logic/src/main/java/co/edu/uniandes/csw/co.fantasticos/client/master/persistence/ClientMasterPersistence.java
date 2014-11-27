@@ -33,10 +33,27 @@ import javax.ejb.Stateless;
 import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.api.IClientMasterPersistence;
 import javax.ejb.LocalBean;
 import javax.enterprise.inject.Default;
+import javax.persistence.Query;
 
 @Default
 @Stateless 
 @LocalBean
 public class ClientMasterPersistence extends _ClientMasterPersistence  implements IClientMasterPersistence {
+    
+    public void deleteAllFacebookFriendsFromClient(String clientId) {
+        
+        Query q = entityManager.createNamedQuery("ClientfacebookFriendsEntity.deleteAllClientfacebookFriendsEntity");
+        q.setParameter("clientId", clientId);
+        q.executeUpdate();
+        
+    }
+    
+    public void deleteAllGoogleFriendsFromClient(String clientId) {
+        
+        Query q = entityManager.createNamedQuery("ClientgoogleFriendsEntity.deleteAllClientgoogleFriendsEntity");
+        q.setParameter("clientId", clientId);
+        q.executeUpdate();
+        
+    }
 
 }

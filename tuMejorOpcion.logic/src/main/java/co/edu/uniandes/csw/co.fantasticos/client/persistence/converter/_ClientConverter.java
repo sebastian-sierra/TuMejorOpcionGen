@@ -47,6 +47,8 @@ public abstract class _ClientConverter {
 					dto.setId(entity.getId());
 					dto.setName(entity.getName());
 					dto.setEmail(entity.getEmail());
+                                        dto.setIdFacebook(entity.getIdFacebook());
+					dto.setIdGoogle(entity.getIdGoogle());
 			return dto;
 		}else{
 			return null;
@@ -61,6 +63,10 @@ public abstract class _ClientConverter {
 					entity.setName(dto.getName());
 			
 					entity.setEmail(dto.getEmail());
+                                        
+                                        entity.setIdFacebook(dto.getIdFacebook());
+			
+					entity.setIdGoogle(dto.getIdGoogle());
 			
 			return entity;
 		}else {

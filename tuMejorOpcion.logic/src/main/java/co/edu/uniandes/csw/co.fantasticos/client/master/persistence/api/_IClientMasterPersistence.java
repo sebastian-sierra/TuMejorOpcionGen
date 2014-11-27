@@ -28,11 +28,13 @@
 
 package co.edu.uniandes.csw.co.fantasticos.client.master.persistence.api;
 
+import co.edu.uniandes.csw.co.fantasticos.client.logic.dto.ClientDTO;
 import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientpurchasedGiftCardsEntity;
 import co.edu.uniandes.csw.co.fantasticos.giftcard.logic.dto.GiftCardDTO;
 import co.edu.uniandes.csw.co.fantasticos.client.master.logic.dto.ClientMasterDTO;
-import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientshopsEntity;
-import co.edu.uniandes.csw.co.fantasticos.shop.logic.dto.ShopDTO;
+import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientfacebookFriendsEntity;
+import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientgoogleFriendsEntity;
+import co.edu.uniandes.csw.co.fantasticos.friend.logic.dto.FriendDTO;
 import java.util.List;
 
 public interface _IClientMasterPersistence {
@@ -43,9 +45,11 @@ public interface _IClientMasterPersistence {
     public ClientpurchasedGiftCardsEntity createClientpurchasedGiftCardsEntity(ClientpurchasedGiftCardsEntity entity);
     public void deleteClientpurchasedGiftCardsEntity(String clientId, Long purchasedGiftCardsId);
     public List<GiftCardDTO> getClientpurchasedGiftCardsEntityList(String clientId);
-    public ClientshopsEntity createClientshopsEntity(ClientshopsEntity entity);
-    public void deleteClientshopsEntity(String clientId, String shopsId);
-    public List<ShopDTO> getClientshopsEntityList(String clientId);
-   
+    public ClientfacebookFriendsEntity createClientfacebookFriendsEntity(ClientfacebookFriendsEntity entity);
+    public void deleteClientfacebookFriendsEntity(String clientId, String facebookFriendsId);
+    public List<FriendDTO> getClientfacebookFriendsEntityList(String clientId);
+    public ClientgoogleFriendsEntity createClientgoogleFriendsEntity(ClientgoogleFriendsEntity entity);
+    public void deleteClientgoogleFriendsEntity(String clientId, String googleFriendsId);
+    public List<FriendDTO> getClientgoogleFriendsEntityList(String clientId);
   
 }

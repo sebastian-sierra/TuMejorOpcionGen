@@ -43,6 +43,8 @@ public abstract class _ClientEntity {
 	private String id;
 	private String name;
 	private String email;
+        private String idFacebook;
+	private String idGoogle;
 
 	public String getId(){
 		return id;
@@ -64,5 +66,19 @@ public abstract class _ClientEntity {
 	
 	public void setEmail(String email){
 		this.email = email;
+	}
+        public String getIdFacebook(){
+		return idFacebook;
+	}
+	
+	public void setIdFacebook(String idFacebook){
+		this.idFacebook = idFacebook;
+	}
+	public String getIdGoogle(){
+		return idGoogle;
+	}
+	
+	public void setIdGoogle(String idGoogle){
+		this.idGoogle = idGoogle;
 	}
 }

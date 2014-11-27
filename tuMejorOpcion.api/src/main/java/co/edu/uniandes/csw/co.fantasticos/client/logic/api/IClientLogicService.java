@@ -28,6 +28,10 @@
 
 package co.edu.uniandes.csw.co.fantasticos.client.logic.api;
 
+import co.edu.uniandes.csw.co.fantasticos.client.logic.dto.ClientDTO;
+
 public interface IClientLogicService extends _IClientLogicService {
+    
+    public ClientDTO getClientByEmail(String email);
 
 }

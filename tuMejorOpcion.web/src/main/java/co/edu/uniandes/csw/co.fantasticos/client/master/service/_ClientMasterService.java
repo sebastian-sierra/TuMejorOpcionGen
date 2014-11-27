@@ -63,13 +63,6 @@ public abstract class _ClientMasterService {
         return clientLogicService.getMasterClient(id);
     }
     
-    @GET
-    @Path("likes/{id}")
-    public List<ShopDTO> getLikesFromClient(@PathParam("id") String id)
-    {
-        return clientLogicService.getLikesFromClient(id);
-    }
-
     @PUT
     @Path("{id}")
     public void updateClient(@PathParam("id") String id, ClientMasterDTO client) {

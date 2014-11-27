@@ -33,8 +33,12 @@ import co.edu.uniandes.csw.co.fantasticos.giftcard.persistence.converter.GiftCar
 import co.edu.uniandes.csw.co.fantasticos.client.logic.dto.ClientDTO;
 import co.edu.uniandes.csw.co.fantasticos.client.master.logic.dto.ClientMasterDTO;
 import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.api._IClientMasterPersistence;
-import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientshopsEntity;
+import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientfacebookFriendsEntity;
+import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientgoogleFriendsEntity;
 import co.edu.uniandes.csw.co.fantasticos.client.persistence.api.IClientPersistence;
+import co.edu.uniandes.csw.co.fantasticos.client.persistence.converter.ClientConverter;
+import co.edu.uniandes.csw.co.fantasticos.friend.logic.dto.FriendDTO;
+import co.edu.uniandes.csw.co.fantasticos.friend.persistence.converter.FriendConverter;
 import co.edu.uniandes.csw.co.fantasticos.shop.logic.dto.ShopDTO;
 import co.edu.uniandes.csw.co.fantasticos.shop.persistence.api.IShopPersistence;
 import co.edu.uniandes.csw.co.fantasticos.shop.persistence.converter.ShopConverter;
@@ -54,15 +58,14 @@ public class _ClientMasterPersistence implements _IClientMasterPersistence {
 
     @Inject
     protected IClientPersistence clientPersistence;
-    @Inject
-    protected IShopPersistence shopPersistence;
-
+    
     public ClientMasterDTO getClient(String clientId) {
         ClientMasterDTO clientMasterDTO = new ClientMasterDTO();
         ClientDTO client = clientPersistence.getClient(clientId);
         clientMasterDTO.setClientEntity(client);
         clientMasterDTO.setListpurchasedGiftCards(getClientpurchasedGiftCardsEntityList(clientId));
-        clientMasterDTO.setListshops(getClientshopsEntityList(clientId));
+        clientMasterDTO.setListfacebookFriends(getClientfacebookFriendsEntityList(clientId));
+        clientMasterDTO.setListgoogleFriends(getClientgoogleFriendsEntityList(clientId));
         return clientMasterDTO;
     }
 
@@ -92,27 +95,54 @@ public class _ClientMasterPersistence implements _IClientMasterPersistence {
         return resp;
     }
 
-    public ClientshopsEntity createClientshopsEntity(ClientshopsEntity entity) {
+    public ClientfacebookFriendsEntity createClientfacebookFriendsEntity(ClientfacebookFriendsEntity entity) {
         entityManager.persist(entity);
         return entity;
     }
 
-    public void deleteClientshopsEntity(String clientId, String shopsId) {
-        Query q = entityManager.createNamedQuery("ClientshopsEntity.deleteClientshopsEntity");
+    public void deleteClientfacebookFriendsEntity(String clientId, String facebookFriendsId) {
+        Query q = entityManager.createNamedQuery("ClientfacebookFriendsEntity.deleteClientfacebookFriendsEntity");
         q.setParameter("clientId", clientId);
-        q.setParameter("shopsId", shopsId);
+        q.setParameter("facebookFriendsId", facebookFriendsId);
         q.executeUpdate();
     }
 
-    public List<ShopDTO> getClientshopsEntityList(String clientId) {
-        ArrayList<ShopDTO> resp = new ArrayList<ShopDTO>();
-        Query q = entityManager.createNamedQuery("ClientshopsEntity.getByMasterId");
-        q.setParameter("clientId", clientId);
-        List<ClientshopsEntity> qResult = q.getResultList();
-        for (ClientshopsEntity entity : qResult) {
+    public List<FriendDTO> getClientfacebookFriendsEntityList(String clientId) {
+        ArrayList<FriendDTO> resp = new ArrayList<FriendDTO>();
+        Query q = entityManager.createNamedQuery("ClientfacebookFriendsEntity.getByMasterId");
+        q.setParameter("clientId",clientId);
+        List<ClientfacebookFriendsEntity> qResult =  q.getResultList();
+        for (ClientfacebookFriendsEntity entity : qResult) { 
+            if(entity.getFacebookFriendsIdEntity()==null){
+                entityManager.refresh(entity);
+            }
+            resp.add(FriendConverter.entity2PersistenceDTO(entity.getFacebookFriendsIdEntity()));
+        }
+        return resp;
+    }
+    
+    public ClientgoogleFriendsEntity createClientgoogleFriendsEntity(ClientgoogleFriendsEntity entity) {
+        entityManager.persist(entity);
+        return entity;
+    }
 
-            ShopDTO shopFromMongo = shopPersistence.getShop(entity.getShopsId());
-            resp.add(shopFromMongo);
+    public void deleteClientgoogleFriendsEntity(String clientId, String googleFriendsId) {
+        Query q = entityManager.createNamedQuery("ClientgoogleFriendsEntity.deleteClientgoogleFriendsEntity");
+        q.setParameter("clientId", clientId);
+        q.setParameter("googleFriendsId", googleFriendsId);
+        q.executeUpdate();
+    }
+
+    public List<FriendDTO> getClientgoogleFriendsEntityList(String clientId) {
+        ArrayList<FriendDTO> resp = new ArrayList<FriendDTO>();
+        Query q = entityManager.createNamedQuery("ClientgoogleFriendsEntity.getByMasterId");
+        q.setParameter("clientId",clientId);
+        List<ClientgoogleFriendsEntity> qResult =  q.getResultList();
+        for (ClientgoogleFriendsEntity entity : qResult) { 
+            if(entity.getGoogleFriendsIdEntity()==null){
+                entityManager.refresh(entity);
+            }
+            resp.add(FriendConverter.entity2PersistenceDTO(entity.getGoogleFriendsIdEntity()));
         }
         return resp;
     }

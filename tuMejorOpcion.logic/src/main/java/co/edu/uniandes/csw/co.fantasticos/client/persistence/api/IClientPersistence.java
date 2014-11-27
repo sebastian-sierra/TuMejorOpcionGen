@@ -28,6 +28,10 @@
 
 package co.edu.uniandes.csw.co.fantasticos.client.persistence.api;
 
+import co.edu.uniandes.csw.co.fantasticos.client.logic.dto.ClientDTO;
+
 public interface IClientPersistence extends _IClientPersistence {
+    
+    public ClientDTO getClientByEmail(String email);
 
 }

@@ -26,7 +26,7 @@ module.controller('GiftCardsController',['DataService','$window','$scope', '$htt
     $scope.redirectToCompletedPurchase = function ()
     {
         console.log("redirecting...");
-        $window.location.href = '#/completedPurchase';
+        $window.location.href = '#/friends';
     };
     
     $scope.buySelectedGiftCard = function(giftCard)
@@ -43,9 +43,9 @@ module.controller('GiftCardsController',['DataService','$window','$scope', '$htt
             createpurchasedGiftCards:
             {
                 value:$scope.formData.value,
-                shopId: giftCard.shop.id,
+                shopId: giftCard.shop.name,
                 dateCreated: new Date().getDate()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear(),
-                destinaryId: DataService.selectedFriend.id,
+                destinaryId: DataService.selectedFriend.name,
                 redimido: false
             }
         };
@@ -55,6 +55,7 @@ module.controller('GiftCardsController',['DataService','$window','$scope', '$htt
         {
             console.log(response);
             
+            DataService.justPurchased = true;
             controller.redirectToCompletedPurchase();
         }).
         error(function(data, status, headers, config) {

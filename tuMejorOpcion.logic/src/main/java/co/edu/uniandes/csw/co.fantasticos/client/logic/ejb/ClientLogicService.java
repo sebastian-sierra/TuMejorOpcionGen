@@ -36,10 +36,15 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.co.fantasticos.client.logic.api.IClientLogicService;
+import co.edu.uniandes.csw.co.fantasticos.client.logic.dto.ClientDTO;
 
 @Default
 @Stateless
 @LocalBean
 public class ClientLogicService extends _ClientLogicService implements IClientLogicService {
 
+    public ClientDTO getClientByEmail(String email) {
+        return persistance.getClientByEmail(email);
+    }
+  
 }

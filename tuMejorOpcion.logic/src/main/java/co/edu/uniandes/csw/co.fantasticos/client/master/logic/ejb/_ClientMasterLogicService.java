@@ -34,9 +34,12 @@ import co.edu.uniandes.csw.co.fantasticos.client.logic.dto.ClientDTO;
 import co.edu.uniandes.csw.co.fantasticos.client.master.logic.api._IClientMasterLogicService;
 import co.edu.uniandes.csw.co.fantasticos.client.master.logic.dto.ClientMasterDTO;
 import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.api.IClientMasterPersistence;
+import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientfacebookFriendsEntity;
+import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientgoogleFriendsEntity;
 import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientpurchasedGiftCardsEntity;
-import co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity.ClientshopsEntity;
 import co.edu.uniandes.csw.co.fantasticos.client.persistence.api.IClientPersistence;
+import co.edu.uniandes.csw.co.fantasticos.friend.logic.dto.FriendDTO;
+import co.edu.uniandes.csw.co.fantasticos.friend.persistence.api.IFriendPersistence;
 import co.edu.uniandes.csw.co.fantasticos.shop.logic.dto.ShopDTO;
 import co.edu.uniandes.csw.co.fantasticos.shop.persistence.api.IShopPersistence;
 import co.edu.uniandes.csw.co.fantasticos.threads.ThreadEnviarCorreo;
@@ -52,6 +55,8 @@ public abstract class _ClientMasterLogicService implements _IClientMasterLogicSe
     protected IGiftCardPersistence giftCardPersistance;
     @Inject
     protected IShopPersistence shopPersistance;
+    @Inject 
+    protected IFriendPersistence friendPersistance;
 
     public ClientMasterDTO createMasterClient(ClientMasterDTO client) {
         ClientDTO persistedClientDTO = clientPersistance.createClient(client.getClientEntity());
@@ -63,11 +68,18 @@ public abstract class _ClientMasterLogicService implements _IClientMasterLogicSe
             }
         }
         
-        if (client.getCreateshops() != null) {
-            for (ShopDTO shopDTO : client.getCreateshops()) {
-                ShopDTO createdShopDTO = shopPersistance.createShop(shopDTO);
-                ClientshopsEntity clientShopEntity = new ClientshopsEntity(persistedClientDTO.getId(), createdShopDTO.getId());
-                clientMasterPersistance.createClientshopsEntity(clientShopEntity);
+        if (client.getCreatefacebookFriends() != null) {
+            for (FriendDTO friendDTO : client.getCreatefacebookFriends()) {
+                FriendDTO createdFriendDTO = friendPersistance.createFriend(friendDTO);
+                ClientfacebookFriendsEntity clientFriendEntity = new ClientfacebookFriendsEntity(persistedClientDTO.getId(), createdFriendDTO.getId());
+                clientMasterPersistance.createClientfacebookFriendsEntity(clientFriendEntity);
+            }
+        }
+        if (client.getCreategoogleFriends() != null) {
+            for (FriendDTO friendDTO : client.getCreategoogleFriends()) {
+                FriendDTO createdFriendDTO = friendPersistance.createFriend(friendDTO);
+                ClientgoogleFriendsEntity clientFriendEntity = new ClientgoogleFriendsEntity(persistedClientDTO.getId(), createdFriendDTO.getId());
+                clientMasterPersistance.createClientgoogleFriendsEntity(clientFriendEntity);
             }
         }
         // update giftCard
@@ -78,12 +90,21 @@ public abstract class _ClientMasterLogicService implements _IClientMasterLogicSe
                 clientMasterPersistance.createClientpurchasedGiftCardsEntity(clientGiftCardEntity);
             }
         }
-        // update shop
-        if (client.getUpdateshops() != null) {
-            for (ShopDTO shopDTO : client.getUpdateshops()) {
-                shopPersistance.updateShop(shopDTO);
-                ClientshopsEntity clientShopEntity = new ClientshopsEntity(persistedClientDTO.getId(), shopDTO.getId());
-                clientMasterPersistance.createClientshopsEntity(clientShopEntity);
+        
+        // update friend
+        if (client.getUpdatefacebookFriends() != null) {
+            for (FriendDTO friendDTO : client.getUpdatefacebookFriends()) {
+                friendPersistance.updateFriend(friendDTO);
+                ClientfacebookFriendsEntity clientFriendEntity = new ClientfacebookFriendsEntity(persistedClientDTO.getId(), friendDTO.getId());
+                clientMasterPersistance.createClientfacebookFriendsEntity(clientFriendEntity);
+            }
+        }
+        // update friend
+        if (client.getUpdategoogleFriends() != null) {
+            for (FriendDTO friendDTO : client.getUpdategoogleFriends()) {
+                friendPersistance.updateFriend(friendDTO);
+                ClientgoogleFriendsEntity clientFriendEntity = new ClientgoogleFriendsEntity(persistedClientDTO.getId(), friendDTO.getId());
+                clientMasterPersistance.createClientgoogleFriendsEntity(clientFriendEntity);
             }
         }
         
@@ -111,8 +132,8 @@ public abstract class _ClientMasterLogicService implements _IClientMasterLogicSe
                 
                 ClientDTO sender = clientPersistance.getClient(client.getClientEntity().getId());
                 ClientDTO receiver = clientPersistance.getClient(createdGiftCardDTO.getDestinaryId());
-                ShopDTO shop = shopPersistance.getShop(createdGiftCardDTO.getShopId());
-                (new ThreadEnviarCorreo(sender, createdGiftCardDTO, receiver, shop)).start();
+                
+                (new ThreadEnviarCorreo(sender, createdGiftCardDTO, "sebastian.sierra1993@gmail.com")).start();
             }
         }
         // update giftCard
@@ -128,30 +149,65 @@ public abstract class _ClientMasterLogicService implements _IClientMasterLogicSe
                 giftCardPersistance.deleteGiftCard(giftCardDTO.getId());
             }
         }
-        
-        // delete shop
-        if (client.getDeleteshops() != null) {
-            for (ShopDTO shopDTO : client.getDeleteshops()) {
-                clientMasterPersistance.deleteClientshopsEntity(client.getClientEntity().getId(), shopDTO.getId());
+        // delete friend
+        if (client.getDeletefacebookFriends() != null) {
+            for (FriendDTO friendDTO : client.getDeletefacebookFriends()) {
+                clientMasterPersistance.deleteClientfacebookFriendsEntity(client.getClientEntity().getId(), friendDTO.getId());
             }
         }
-        // persist new shop
-        if (client.getCreateshops() != null) {
-            for (ShopDTO shopDTO : client.getCreateshops()) {
-                ClientshopsEntity clientShopEntity = new ClientshopsEntity(client.getClientEntity().getId(), shopDTO.getId());
-                clientMasterPersistance.createClientshopsEntity(clientShopEntity);
+        // persist new friend
+        if (client.getCreatefacebookFriends() != null) {
+            for (FriendDTO friendDTO : client.getCreatefacebookFriends()) {
+                ClientfacebookFriendsEntity clientFriendEntity = new ClientfacebookFriendsEntity(client.getClientEntity().getId(), friendDTO.getId());
+                clientMasterPersistance.createClientfacebookFriendsEntity(clientFriendEntity);
             }
         }
-        // update shop
-        if (client.getUpdateshops() != null) {
-            for (ShopDTO shopDTO : client.getUpdateshops()) {
-                clientMasterPersistance.deleteClientshopsEntity(client.getClientEntity().getId(), shopDTO.getId());
-                shopPersistance.updateShop(shopDTO);
-                ClientshopsEntity clientShopEntity = new ClientshopsEntity(client.getId(), shopDTO.getId());
-                clientMasterPersistance.createClientshopsEntity(clientShopEntity);
+        // update friend
+        if (client.getUpdatefacebookFriends() != null) {
+            //Eliminar todos
+            clientMasterPersistance.deleteAllFacebookFriendsFromClient(client.getClientEntity().getId());
+            for (FriendDTO friendDTO : client.getUpdatefacebookFriends()) {
+                //clientMasterPersistance.deleteClientfacebookFriendsEntity(client.getClientEntity().getId(), friendDTO.getId());
+                
+                if(friendPersistance.getFriend(friendDTO.getId()) == null) {
+                    friendPersistance.createFriend(friendDTO);
+                }
+                friendPersistance.updateFriend(friendDTO);
+                ClientfacebookFriendsEntity clientFriendEntity = new ClientfacebookFriendsEntity(client.getClientEntity().getId(), friendDTO.getId());
+                clientMasterPersistance.createClientfacebookFriendsEntity(clientFriendEntity);
                 
             }
         }
+        // delete friend
+        if (client.getDeletegoogleFriends() != null) {
+            for (FriendDTO friendDTO : client.getDeletegoogleFriends()) {
+                clientMasterPersistance.deleteClientgoogleFriendsEntity(client.getClientEntity().getId(), friendDTO.getId());
+            }
+        }
+        // persist new friend
+        if (client.getCreategoogleFriends() != null) {
+            for (FriendDTO friendDTO : client.getCreategoogleFriends()) {
+                ClientgoogleFriendsEntity clientFriendEntity = new ClientgoogleFriendsEntity(client.getClientEntity().getId(), friendDTO.getId());
+                clientMasterPersistance.createClientgoogleFriendsEntity(clientFriendEntity);
+            }
+        }
+        // update friend
+        if (client.getUpdategoogleFriends() != null) {
+            clientMasterPersistance.deleteAllGoogleFriendsFromClient(client.getClientEntity().getId());
+            for (FriendDTO friendDTO : client.getUpdategoogleFriends()) {
+                //clientMasterPersistance.deleteClientgoogleFriendsEntity(client.getClientEntity().getId(), friendDTO.getId());
+                
+                if(friendPersistance.getFriend(friendDTO.getId()) == null) {
+                    friendPersistance.createFriend(friendDTO);
+                }
+                
+                friendPersistance.updateFriend(friendDTO);
+                ClientgoogleFriendsEntity clientFriendEntity = new ClientgoogleFriendsEntity(client.getClientEntity().getId(), friendDTO.getId());
+                clientMasterPersistance.createClientgoogleFriendsEntity(clientFriendEntity);
+                
+            }
+        }
+
     }
     
 }

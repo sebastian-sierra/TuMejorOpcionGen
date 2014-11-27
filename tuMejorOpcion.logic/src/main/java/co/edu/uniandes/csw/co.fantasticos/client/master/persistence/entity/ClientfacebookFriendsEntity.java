@@ -28,7 +28,7 @@
 
 package co.edu.uniandes.csw.co.fantasticos.client.master.persistence.entity;
 
-import co.edu.uniandes.csw.co.fantasticos.shop.persistence.entity.ShopEntity;
+import co.edu.uniandes.csw.co.fantasticos.friend.persistence.entity.FriendEntity;
 import co.edu.uniandes.csw.co.fantasticos.client.persistence.entity.ClientEntity;
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -42,34 +42,35 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import org.eclipse.persistence.annotations.JoinFetch;
 
 @Entity
-@IdClass(ClientshopsEntityId.class)
+@IdClass(ClientfacebookFriendsEntityId.class)
 @NamedQueries({
-    @NamedQuery(name = "ClientshopsEntity.getByMasterId", query = "SELECT  u FROM ClientshopsEntity u WHERE u.clientId=:clientId"),
-    @NamedQuery(name = "ClientshopsEntity.deleteClientshopsEntity", query = "DELETE FROM ClientshopsEntity u WHERE u.clientId=:clientId and  u.shopsId=:shopsId")
+    @NamedQuery(name = "ClientfacebookFriendsEntity.getByMasterId", query = "SELECT  u FROM ClientfacebookFriendsEntity u WHERE u.clientId=:clientId"),
+    @NamedQuery(name = "ClientfacebookFriendsEntity.deleteClientfacebookFriendsEntity", query = "DELETE FROM ClientfacebookFriendsEntity u WHERE u.clientId=:clientId and  u.facebookFriendsId=:facebookFriendsId"),
+    @NamedQuery(name = "ClientfacebookFriendsEntity.deleteAllClientfacebookFriendsEntity", query = "DELETE FROM ClientfacebookFriendsEntity u WHERE u.clientId=:clientId")
 })
-public class ClientshopsEntity implements Serializable {
+public class ClientfacebookFriendsEntity implements Serializable {
 
     @Id
     @Column(name = "clientId")
     private String clientId;
     @Id
-    @Column(name = "shopsId")
-    private String shopsId;
+    @Column(name = "facebookFriendsId")
+    private String facebookFriendsId;
     @ManyToOne
     @PrimaryKeyJoinColumn(name = "clientId", referencedColumnName = "id")
     @JoinFetch
     private ClientEntity clientIdEntity;
     @ManyToOne
-    @PrimaryKeyJoinColumn(name = "shopsId", referencedColumnName = "id")
+    @PrimaryKeyJoinColumn(name = "facebookFriendsId", referencedColumnName = "id")
     @JoinFetch
-    private ShopEntity shopsIdEntity; 
+    private FriendEntity facebookFriendsIdEntity; 
 
-    public ClientshopsEntity() {
+    public ClientfacebookFriendsEntity() {
     }
 
-    public ClientshopsEntity(String clientId, String shopsId) {
+    public ClientfacebookFriendsEntity(String clientId, String facebookFriendsId) {
         this.clientId =clientId;
-        this.shopsId = shopsId;
+        this.facebookFriendsId = facebookFriendsId;
     }
 
     public String getClientId() {
@@ -80,12 +81,12 @@ public class ClientshopsEntity implements Serializable {
         this.clientId = clientId;
     }
 
-    public String getShopsId() {
-        return shopsId;
+    public String getFacebookFriendsId() {
+        return facebookFriendsId;
     }
 
-    public void setShopsId(String shopsId) {
-        this.shopsId = shopsId;
+    public void setFacebookFriendsId(String facebookFriendsId) {
+        this.facebookFriendsId = facebookFriendsId;
     }
 
     public ClientEntity getClientIdEntity() {
@@ -96,12 +97,12 @@ public class ClientshopsEntity implements Serializable {
         this.clientIdEntity = clientIdEntity;
     }
 
-    public ShopEntity getShopsIdEntity() {
-        return shopsIdEntity;
+    public FriendEntity getFacebookFriendsIdEntity() {
+        return facebookFriendsIdEntity;
     }
 
-    public void setShopsIdEntity(ShopEntity shopsIdEntity) {
-        this.shopsIdEntity = shopsIdEntity;
+    public void setFacebookFriendsIdEntity(FriendEntity facebookFriendsIdEntity) {
+        this.facebookFriendsIdEntity = facebookFriendsIdEntity;
     }
 
 }

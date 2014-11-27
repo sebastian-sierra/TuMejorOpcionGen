@@ -33,7 +33,5 @@ import co.edu.uniandes.csw.co.fantasticos.shop.logic.dto.ShopDTO;
 import java.util.List;
 
 public interface IClientMasterLogicService extends _IClientMasterLogicService {
-
-    public List<ShopDTO> getLikesFromClient(String id);
         
 }

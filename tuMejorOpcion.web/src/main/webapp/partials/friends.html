@@ -15,7 +15,7 @@
                 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#/friends" >Mis Amigos</a></li>
-                    <li><a href="#/purchasedGiftCards">Bonos Comprados</a></li>
+                    <li><a ng-click="redirectToPurchasedGiftCards()">Bonos Comprados</a></li>
                 </ul>
             </div>
         </div>
@@ -28,15 +28,26 @@
     <section class="bg-light-gray">
         <div class="container">
             <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" ng-show="justPurchased">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <strong>Perfecto!</strong> Tu compra se ha realizado con éxito.
+                </div>
+            </div>
+            </div>
+            
+            <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Hola {{me.first_name}}!</h2>
+                    <h2 class="section-heading">Hola {{me.name}}!</h2>
                     <h3 class="section-subheading text-muted">Estos son tus amigos, selecciona alguno para ver qué le gusta!</h3>
                 </div>
             </div>
             <div class="row">
 
-                <div class="col-md-8 col-md-offset-2">
-
+                <div class="col-md-6" ng-hide="facebookFriends.length==0">
+                    
+                    <h2 class="section-subheading text-center">Facebook</h2>
+                    
                     <table class="table table-bordered table-striped">
 
 
@@ -49,16 +60,49 @@
                         </thead>
 
                         <tbody>
-                            <tr data-ng-repeat="friend in friends">
-                                <td><img src = "{{friend.url}}"></td>
+                            <tr data-ng-repeat="friend in facebookFriends">
+                                <td><img src = "{{friend.imgUrl}}"></td>
                                 <td>{{friend.name}}</td>
-                                <td><button class="btn btn-primary" ng-click="didSelectFriend(friend)">Elegir amigo</button></td>
+                                <td><button class="btn btn-primary" ng-click="didSelectFriend(friend, 'facebook')">Elegir amigo</button></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    
+                </div>
+                <div class="col-md-6" ng-hide="googleFriends.length==0">
+                    
+                    <h2 class="section-subheading text-center">Google+</h2>
+                    
+                    <table class="table table-bordered table-striped">
+
+
+                        <thead>
+                            <tr>
+                                <th>Foto</th>
+                                <th>Nombre</th>
+                                <th>Seleccionar</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr data-ng-repeat="friend in googleFriends">
+                                <td><img src = "{{friend.imgUrl}}"></td>
+                                <td>{{friend.name}}</td>
+                                <td><button class="btn btn-primary" ng-click="didSelectFriend(friend, 'google')">Elegir amigo</button></td>
                             </tr>
                         </tbody>
 
                     </table>
                 </div>
+                
             </div>
+            
+            <div class="row">
+
+                
+            </div>
+            
     </section>
 
     <footer>

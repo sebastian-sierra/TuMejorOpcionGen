@@ -28,25 +28,31 @@
 
 package co.edu.uniandes.csw.co.fantasticos.client.persistence;
 
+import co.edu.uniandes.csw.co.fantasticos.client.logic.dto.ClientDTO;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.co.fantasticos.client.persistence.api.IClientPersistence;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoCredential;
-import com.mongodb.ServerAddress;
-import java.net.UnknownHostException;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import co.edu.uniandes.csw.co.fantasticos.client.persistence.converter.ClientConverter;
+import co.edu.uniandes.csw.co.fantasticos.client.persistence.entity.ClientEntity;
+
 import javax.ejb.LocalBean;
+import javax.persistence.Query;
 
 @Default
 @Stateless 
 @LocalBean
 public class ClientPersistence extends _ClientPersistence  implements IClientPersistence 
 {   
-    public ClientPersistence() 
-    {
-    }   
+    public ClientDTO getClientByEmail(String email) {
+        Query q = entityManager.createQuery("select u from ClientEntity u where u.email=:email");
+        q.setParameter("email", email);
+        
+        ClientEntity resultEntity = (ClientEntity)q.getSingleResult(); 
+        ClientDTO resultDTO = ClientConverter.entity2PersistenceDTO(resultEntity);
+        
+        return resultDTO;
+        
+    }
+      
 }

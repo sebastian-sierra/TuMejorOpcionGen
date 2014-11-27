@@ -30,6 +30,7 @@ package co.edu.uniandes.csw.co.fantasticos.client.master.logic.dto;
 
 import co.edu.uniandes.csw.co.fantasticos.giftcard.logic.dto.GiftCardDTO;
 import co.edu.uniandes.csw.co.fantasticos.client.logic.dto.ClientDTO;
+import co.edu.uniandes.csw.co.fantasticos.friend.logic.dto.FriendDTO;
 import co.edu.uniandes.csw.co.fantasticos.shop.logic.dto.ShopDTO;
 
 import java.util.List;
@@ -65,11 +66,16 @@ public abstract class _ClientMasterDTO {
     public List<GiftCardDTO> deletepurchasedGiftCards;
     public List<GiftCardDTO> listpurchasedGiftCards;
     
-    public List<ShopDTO> createshops;
-    public List<ShopDTO> updateshops;
-    public List<ShopDTO> deleteshops;
-    public List<ShopDTO> listshops;	
-	
+    public List<FriendDTO> createfacebookFriends;
+    public List<FriendDTO> updatefacebookFriends;
+    public List<FriendDTO> deletefacebookFriends;
+    public List<FriendDTO> listfacebookFriends;	
+
+    public List<FriendDTO> creategoogleFriends;
+    public List<FriendDTO> updategoogleFriends;
+    public List<FriendDTO> deletegoogleFriends;
+    public List<FriendDTO> listgoogleFriends;	
+
 		
     public List<GiftCardDTO> getCreatepurchasedGiftCards(){ return createpurchasedGiftCards; };
     public void setCreatepurchasedGiftCards(List<GiftCardDTO> createpurchasedGiftCards){ this.createpurchasedGiftCards=createpurchasedGiftCards; };
@@ -79,15 +85,74 @@ public abstract class _ClientMasterDTO {
     public void setDeletepurchasedGiftCards(List<GiftCardDTO> deletepurchasedGiftCards){ this.deletepurchasedGiftCards=deletepurchasedGiftCards; };
     public List<GiftCardDTO> getListpurchasedGiftCards(){ return listpurchasedGiftCards; };
     public void setListpurchasedGiftCards(List<GiftCardDTO> listpurchasedGiftCards){ this.listpurchasedGiftCards=listpurchasedGiftCards; };	
+
+    public List<FriendDTO> getCreatefacebookFriends() {
+        return createfacebookFriends;
+    }
+
+    public void setCreatefacebookFriends(List<FriendDTO> createfacebookFriends) {
+        this.createfacebookFriends = createfacebookFriends;
+    }
+
+    public List<FriendDTO> getUpdatefacebookFriends() {
+        return updatefacebookFriends;
+    }
+
+    public void setUpdatefacebookFriends(List<FriendDTO> updatefacebookFriends) {
+        this.updatefacebookFriends = updatefacebookFriends;
+    }
+
+    public List<FriendDTO> getDeletefacebookFriends() {
+        return deletefacebookFriends;
+    }
+
+    public void setDeletefacebookFriends(List<FriendDTO> deletefacebookFriends) {
+        this.deletefacebookFriends = deletefacebookFriends;
+    }
+
+    public List<FriendDTO> getListfacebookFriends() {
+        return listfacebookFriends;
+    }
+
+    public void setListfacebookFriends(List<FriendDTO> listfacebookFriends) {
+        this.listfacebookFriends = listfacebookFriends;
+    }
+
+    public List<FriendDTO> getCreategoogleFriends() {
+        return creategoogleFriends;
+    }
+
+    public void setCreategoogleFriends(List<FriendDTO> creategoogleFriends) {
+        this.creategoogleFriends = creategoogleFriends;
+    }
+
+    public List<FriendDTO> getUpdategoogleFriends() {
+        return updategoogleFriends;
+    }
+
+    public void setUpdategoogleFriends(List<FriendDTO> updategoogleFriends) {
+        this.updategoogleFriends = updategoogleFriends;
+    }
+
+    public List<FriendDTO> getDeletegoogleFriends() {
+        return deletegoogleFriends;
+    }
+
+    public void setDeletegoogleFriends(List<FriendDTO> deletegoogleFriends) {
+        this.deletegoogleFriends = deletegoogleFriends;
+    }
+
+    public List<FriendDTO> getListgoogleFriends() {
+        return listgoogleFriends;
+    }
+
+    public void setListgoogleFriends(List<FriendDTO> listgoogleFriends) {
+        this.listgoogleFriends = listgoogleFriends;
+    }
+ 
     
-    public List<ShopDTO> getCreateshops(){ return createshops; };
-    public void setCreateshops(List<ShopDTO> createshops){ this.createshops=createshops; };
-    public List<ShopDTO> getUpdateshops(){ return updateshops; };
-    public void setUpdateshops(List<ShopDTO> updateshops){ this.updateshops=updateshops; };
-    public List<ShopDTO> getDeleteshops(){ return deleteshops; };
-    public void setDeleteshops(List<ShopDTO> deleteshops){ this.deleteshops=deleteshops; };
-    public List<ShopDTO> getListshops(){ return listshops; };
-    public void setListshops(List<ShopDTO> listshops){ this.listshops=listshops; };
-	
+    
+    
+    	
 }
 

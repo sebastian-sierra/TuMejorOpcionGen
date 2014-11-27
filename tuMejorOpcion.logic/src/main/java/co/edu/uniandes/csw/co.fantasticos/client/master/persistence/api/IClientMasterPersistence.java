@@ -29,5 +29,9 @@
 package co.edu.uniandes.csw.co.fantasticos.client.master.persistence.api;
 
 public interface IClientMasterPersistence extends _IClientMasterPersistence {
+    
+    public void deleteAllFacebookFriendsFromClient(String clientId);
+    
+    public void deleteAllGoogleFriendsFromClient(String clientId);
 	
 }

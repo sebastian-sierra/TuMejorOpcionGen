@@ -31,7 +31,12 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.co.fantasticos.client.logic.api.IClientLogicService;
+import co.edu.uniandes.csw.co.fantasticos.client.logic.dto.ClientDTO;
 @Singleton
 public class ClientMockLogicService extends _ClientMockLogicService implements IClientLogicService {
+
+    public ClientDTO getClientByEmail(String email) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

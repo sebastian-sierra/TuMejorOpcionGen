@@ -41,11 +41,11 @@
                             
                         <tbody>   
                             
-                            <tr data-ng-repeat="giftCard in giftCards">
+                            <tr data-ng-repeat="giftCard in giftCards track by giftCard.id">
                                 <td>
                                     <ul style="list-style-type:none">
-                                        <li> Para: {{giftCard.receiver.name}} </li>
-                                        <li> {{giftCard.shop.name}} </li>
+                                        <li> Para: {{giftCard.destinaryId}} </li>
+                                        <li> {{giftCard.shopId}} </li>
                                         <li> ${{giftCard.value}} </li>
                                         <li> ID: {{giftCard.id}} </li>
                                         <li> {{giftCard.dateCreated}} </li>

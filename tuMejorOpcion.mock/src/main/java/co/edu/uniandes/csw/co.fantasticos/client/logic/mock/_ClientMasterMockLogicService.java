@@ -34,6 +34,7 @@ import co.edu.uniandes.csw.co.fantasticos.client.logic.dto.ClientDTO;
 import co.edu.uniandes.csw.co.fantasticos.client.logic.api.IClientLogicService;
 import co.edu.uniandes.csw.co.fantasticos.client.master.logic.api._IClientMasterLogicService;
 import co.edu.uniandes.csw.co.fantasticos.client.master.logic.dto.ClientMasterDTO;
+import co.edu.uniandes.csw.co.fantasticos.friend.logic.api.IFriendLogicService;
 import co.edu.uniandes.csw.co.fantasticos.giftcard.logic.api.IGiftCardLogicService;
 import co.edu.uniandes.csw.co.fantasticos.giftcard.logic.dto.GiftCardDTO;
 import javax.inject.Inject;
@@ -46,6 +47,7 @@ public abstract class _ClientMasterMockLogicService implements _IClientMasterLog
     protected IGiftCardLogicService giftCardPersistance;
     @Inject
     protected IClientLogicService clientPersistance;
+    @Inject IFriendLogicService friendLogicService;
 
     public ClientMasterDTO createMasterClient(ClientMasterDTO client) {
 

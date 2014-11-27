@@ -41,8 +41,4 @@ import javax.enterprise.inject.Default;
 @LocalBean
 public class ClientMasterLogicService extends _ClientMasterLogicService implements IClientMasterLogicService {
 
-    public List<ShopDTO> getLikesFromClient(String id) {
-        return clientMasterPersistance.getClientshopsEntityList(id);
-    }
-
 }

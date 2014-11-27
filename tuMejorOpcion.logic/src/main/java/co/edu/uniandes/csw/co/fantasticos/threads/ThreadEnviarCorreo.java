@@ -23,14 +23,16 @@ public class ThreadEnviarCorreo extends Thread {
 
     private final ClientDTO sender;
     private final GiftCardDTO giftCard;
-    private final ClientDTO receiver;
-    private final ShopDTO shop;
+    private final String receiver;
+    private final String shop;
+    private final String destinaryEmail;
 
-    public ThreadEnviarCorreo(ClientDTO sender, GiftCardDTO giftCard, ClientDTO receiver, ShopDTO shop) {
+    public ThreadEnviarCorreo(ClientDTO sender, GiftCardDTO giftCard, String destinaryEmail) {
         this.sender = sender;
         this.giftCard = giftCard;
-        this.receiver = receiver;
-        this.shop = shop;
+        this.receiver = giftCard.getDestinaryId();
+        this.shop = giftCard.getShopId();
+        this.destinaryEmail = destinaryEmail;
     }
 
     public void run() {
@@ -51,10 +53,10 @@ public class ThreadEnviarCorreo extends Thread {
 
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("noreply.tumejoropcion@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receiver.getEmail()));
-            message.setSubject("Bienvenido, " + receiver.getName());
-            message.setText("Hola " + receiver.getName() + "!,\n  De parte del equipo de  TuMejorOpcion.com, queremos informarle que usted ha recibido un bono de regalo  con la siguiente información"
-                    + "\n Marca: " +shop.getName()+
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinaryEmail));
+            message.setSubject("Bienvenido, " + receiver);
+            message.setText("Hola " + receiver + "!,\n  De parte del equipo de  TuMejorOpcion.com, queremos informarle que usted ha recibido un bono de regalo  con la siguiente información"
+                    + "\n Marca: " +shop+
                     "\n Valor: " +giftCard.getValue()+
                     "\n De parte de: " +sender.getName()+
                     "\n Número de identificación del bono: " +giftCard.getId()+
